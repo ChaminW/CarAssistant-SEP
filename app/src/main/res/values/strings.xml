@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Car Assistant</string>
+
+    <string name="DashboardTab">Dash Board</string>
+    <string name="action_settings">Settings</string>
+    <string name="addFillBtn">Fuel Fill-Up</string>
+    <string name="title_activity_add_fill_up">AddFillUp</string>
+
+    <string name="hello_world">Hello world!</string>
+</resources>
