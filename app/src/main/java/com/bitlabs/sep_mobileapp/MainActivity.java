@@ -15,19 +15,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-
-
-            addFillBtn = (Button) findViewById(R.id.addFillBtn);
-
-
-
-
-
-
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        addFillBtn = (Button) findViewById(R.id.addFillBtn);
 
 
     }
@@ -59,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void OnAddFillClick(View view) {
-        Toast.makeText(this,"Enter a Fill up details",Toast.LENGTH_LONG).show();
-        Intent getAddFillIntent = new Intent(this,AddFillUp.class);
+        Toast.makeText(this, "Enter a Fill up details", Toast.LENGTH_LONG).show();
+        Intent getAddFillIntent = new Intent(this, AddFillUp.class);
         startActivity(getAddFillIntent);
 
 

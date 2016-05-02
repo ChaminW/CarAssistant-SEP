@@ -16,11 +16,6 @@ public class AddFillUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_fill_up);
 
-        String[] FillUpForm = {"Date","Cost","Fuel","Fuel Type"};
-
-        ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,FillUpForm);
-        ListView FillUpView = (ListView)findViewById(R.id.fillUpList);
-        FillUpView.setAdapter(listAdapter);
 
     }
 
