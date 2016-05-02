@@ -3,17 +3,42 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/addFillBtn"
-        android:id="@+id/addFillBtn"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="OnAddFillClick"/>
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+
+        >
+
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addFillBtn"
+            android:id="@+id/addExpenseBtn"
+
+            android:onClick="OnAddFillClick"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"/>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/OtherExpense"
+            android:id="@+id/addFillBtn"
+
+            android:onClick="OnOtherExpenseClick"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"/>
+    </LinearLayout>
 
 </RelativeLayout>

@@ -11,12 +11,25 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.bitlabs.sep_mobileapp.AddFillUp">
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp"
         android:background="#daffffff"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_margin="5dp"
+        >
 
         <!--<ListView
             android:id="@+id/fillUpList"
@@ -29,97 +42,129 @@
             android:layout_marginTop="@dimen/margineSize"
 
             android:clickable="false" />-->
-        <LinearLayout
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
 
-            <EditText
-                android:id="@+id/editText3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Odo Counter" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/editText4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Fuel" />
+                    android:id="@+id/editText3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Odo Counter"
+                    android:editable="false"
+                    android:background="@android:color/transparent"
+                    android:contextClickable="false"
+                    android:layout_margin="10dp"/>
 
             <EditText
-                android:id="@+id/editText6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Total Cost" />
+                    android:id="@+id/odoCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="0"
+                    android:inputType="number" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
             <EditText
-                android:id="@+id/editText7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Price per" />
+                    android:id="@+id/editText4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:background="@android:color/transparent"
+                    android:text="Fuel"
+                android:layout_margin="10dp"/>
+
+            <EditText
+                    android:id="@+id/fuelCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="00.00"
+                    android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <EditText
+                    android:id="@+id/editText6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:background="@android:color/transparent"
+                    android:text="Total Cost"
+                    android:layout_margin="10dp"/>
+
+            <EditText
+                    android:id="@+id/totalCost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="00.00"
+                    android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <EditText
+                    android:id="@+id/editText7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:background="@android:color/transparent"
+                    android:text="Price per"
+                    android:layout_margin="10dp"/>
+
+            <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="00.00"
+                    android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
             <EditText
                 android:id="@+id/editText5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Date" />
-        </LinearLayout>
+                android:editable="false"
+                android:background="@android:color/transparent"
+                android:text="Date"
+                android:layout_margin="10dp"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-            <EditText
-                android:id="@+id/odoCount"
+            <DatePicker
+                android:id="@+id/date_selector"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="1234"
-                android:inputType="number" />
+                android:layout_column="1"
+                android:layout_row="3"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner" />
 
-            <EditText
-                android:id="@+id/fuelCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="00.00"
-                android:inputType="number" />
+        </TableRow>
 
-            <EditText
-                android:id="@+id/totalCost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="00.00"
-                android:inputType="number" />
 
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="00.00"
-                android:inputType="number" />
-
-            <EditText
-                android:id="@+id/editText2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="2016-01-01"
-                android:inputType="date" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    </TableLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_margin="5dp"
         android:background="#ffffff"
         android:orientation="vertical"
 
@@ -151,34 +196,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="#ffffff"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/saveBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_margin="10dp"
-            android:background="#010101"
-            android:text="Save"
-            android:textColor="#ffffff"></Button>
-
-        <Button
+        android:layout_margin="5dp"
+        android:layout_alignParentBottom="true"
+        >
+    <Button android:text="Save"
+        android:id="@+id/saveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+    </Button>
+        <Button android:text="Cancel"
             android:id="@+id/cancelBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_margin="10dp"
-            android:background="#010101"
-            android:text="Cancel"
-            android:textColor="#ffffff"></Button>
+            >
+        </Button>
 
     </LinearLayout>
 
+</LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
