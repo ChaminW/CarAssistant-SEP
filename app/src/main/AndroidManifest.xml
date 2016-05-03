@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,12 +17,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddFillUp"
+            android:name=".view.AddFillUp"
             android:label="@string/title_activity_add_fill_up"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".view.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bitlabs.sep_mobileapp.MainActivity" />
+                android:value=".view.MainActivity" />
 
             <intent-filter>
                 <action android:name="com.bitlabs.sep_mobileapp.AddFillUp" />
@@ -31,12 +31,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddOtherExpense"
+            android:name=".view.AddOtherExpense"
             android:label="@string/title_activity_add_other_expense"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".view.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bitlabs.sep_mobileapp.MainActivity" />
+                android:value=".view.MainActivity" />
 
             <intent-filter>
                 <action android:name="com.bitlabs.sep_mobileapp.AddOtherExpense" />

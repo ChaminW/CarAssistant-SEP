@@ -1,4 +1,4 @@
-package com.bitlabs.sep_mobileapp;
+package com.bitlabs.sep_mobileapp.view;
 
 import android.app.ListActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.bitlabs.sep_mobileapp.R;
 
 public class AddFillUp extends AppCompatActivity {
 

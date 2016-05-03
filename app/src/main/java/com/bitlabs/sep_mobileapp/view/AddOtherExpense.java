@@ -1,4 +1,4 @@
-package com.bitlabs.sep_mobileapp;
+package com.bitlabs.sep_mobileapp.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import com.bitlabs.sep_mobileapp.R;
 
 public class AddOtherExpense extends AppCompatActivity {
 
