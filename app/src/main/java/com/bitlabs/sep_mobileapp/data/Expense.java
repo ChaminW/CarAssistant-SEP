@@ -7,16 +7,26 @@ import java.util.Date;
  */
 public class Expense {
 
+    private  int id;
     private Date date;
     private double cost;
     private String note;
     private int odoMeter;
 
-    public Expense(Date date, double cost, String note, int odoMeter) {
+    public Expense(int id, Date date, double cost, String note, int odoMeter) {
+        this.id = id;
         this.date = date;
         this.cost = cost;
         this.note = note;
         this.odoMeter = odoMeter;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getDate() {

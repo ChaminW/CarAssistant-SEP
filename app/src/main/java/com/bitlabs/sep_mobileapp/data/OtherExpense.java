@@ -11,8 +11,8 @@ public class OtherExpense extends Expense{
     private String title;
     private String reccurenceType;
 
-    public OtherExpense(Date date, double cost, String note, int odoMeter, String category, String title, String reccurenceType) {
-        super(date, cost, note, odoMeter);
+    public OtherExpense(int id, Date date, double cost, String note, int odoMeter, String category, String title, String reccurenceType) {
+        super(id, date, cost, note, odoMeter);
         this.category = category;
         this.title = title;
         this.reccurenceType = reccurenceType;

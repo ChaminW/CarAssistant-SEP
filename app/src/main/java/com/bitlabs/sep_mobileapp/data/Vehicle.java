@@ -8,15 +8,23 @@ public class Vehicle {
     private String model;
     private String distanceUnit;
     private String fuelUnit;
-    private String licenseNo;
+    private String regNo;
     private String year;
 
-    public Vehicle(String model, String distanceUnit, String fuelUnit, String licenseNo, String year) {
+    public Vehicle(String model, String distanceUnit, String fuelUnit, String regNo, String year) {
         this.model = model;
         this.distanceUnit = distanceUnit;
         this.fuelUnit = fuelUnit;
-        this.licenseNo = licenseNo;
+        this.regNo = regNo;
         this.year = year;
+    }
+
+    public String getRegNo() {
+        return regNo;
+    }
+
+    public void setRegNo(String regNo) {
+        this.regNo = regNo;
     }
 
     public String getModel() {
@@ -43,13 +51,6 @@ public class Vehicle {
         this.fuelUnit = fuelUnit;
     }
 
-    public String getLicenseNo() {
-        return licenseNo;
-    }
-
-    public void setLicenseNo(String licenseNo) {
-        this.licenseNo = licenseNo;
-    }
 
     public String getYear() {
         return year;

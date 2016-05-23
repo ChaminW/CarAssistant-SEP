@@ -5,14 +5,54 @@ package com.bitlabs.sep_mobileapp.data;
  */
 public class Reminder {
 
+    private int id;
     private boolean alarmOn;
     private String notificationType;
     private String alarmTone;
+    private String title;
+    private String time;
+    private String reccurenceType;
 
-    public Reminder(boolean alarmOn, String notificationType, String alarmTone) {
+    public Reminder(int id, boolean alarmOn, String notificationType, String alarmTone, String title, String time, String reccurenceType) {
+        this.id = id;
         this.alarmOn = alarmOn;
         this.notificationType = notificationType;
         this.alarmTone = alarmTone;
+        this.title = title;
+        this.time = time;
+        this.reccurenceType = reccurenceType;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getReccurenceType() {
+        return reccurenceType;
+    }
+
+    public void setReccurenceType(String reccurenceType) {
+        this.reccurenceType = reccurenceType;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public boolean isAlarmOn() {

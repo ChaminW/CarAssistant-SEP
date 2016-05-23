@@ -13,14 +13,16 @@ public class FuelFillUp extends Expense {
     private String location;
     private boolean isFullTank;
 
-    public FuelFillUp(Date date, double cost, String note, int odoMeter, String fuelType, double amount, double costPerLiter, String location, boolean isFullTank) {
-        super(date, cost, note, odoMeter);
+
+    public FuelFillUp(int id, Date date,int odoMeter, double cost, double amount, double costPerLiter, String fuelType,  boolean isFullTank, String location, String note) {
+        super(id, date, cost, note, odoMeter);
+        this.isFullTank = isFullTank;
         this.fuelType = fuelType;
         this.amount = amount;
         this.costPerLiter = costPerLiter;
         this.location = location;
-        this.isFullTank = isFullTank;
     }
+
 
     public String getFuelType() {
         return fuelType;
@@ -54,7 +56,7 @@ public class FuelFillUp extends Expense {
         this.location = location;
     }
 
-    public boolean isFullTank() {
+    public boolean getIsFullTank() {
         return isFullTank;
     }
 
