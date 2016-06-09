@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@android:drawable/ic_dialog_dialer"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_Vehicles"
+            android:icon="@drawable/ic_directions_car_black_24dp"
+            android:title="Vehicles" />
+
+
+
+    </group>
+
+
+    <item android:title="Fuel"
+
+        >
+
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_AddFuel"
+                    android:icon="@drawable/ic_gas_station_white_48dp"
+                    android:title="Add Fuel" />
+                <item
+                    android:id="@+id/nav_FuelCharts"
+                    android:icon="@drawable/ic_show_chart_black_24dp"
+                    android:title="Charts" />
+                <item
+                    android:id="@+id/nav_FuelMap"
+                    android:icon="@android:drawable/ic_dialog_map"
+                    android:title="Map" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Expense"
+
+        >
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_AddExpense"
+                    android:icon="@drawable/ic_attach_money_black_24dp"
+                    android:title="Add Expense" />
+                <item
+                    android:id="@+id/nav_ExpenseCharts"
+                    android:icon="@drawable/ic_show_chart_black_24dp"
+                    android:title="Charts" />
+                <item
+                    android:id="@+id/nav_ExpenseMap"
+                    android:icon="@android:drawable/ic_dialog_map"
+                    android:title="Map" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="     ">
+        <menu>
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/nav_Settings"
+                    android:icon="@android:drawable/ic_menu_manage"
+                    android:title="Settings" />
+                <item
+                    android:id="@+id/nav_GoogleDriveBackUp"
+                    android:icon="@android:drawable/ic_menu_save"
+                    android:title="Google Backup" />
+            </group>
+        </menu>
+    </item>
+
+</menu>
+
+
+
+

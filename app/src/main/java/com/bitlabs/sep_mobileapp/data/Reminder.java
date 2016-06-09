@@ -1,5 +1,7 @@
 package com.bitlabs.sep_mobileapp.data;
 
+import java.util.Date;
+
 /**
  * Created by Chamin on 5/3/2016.
  */
@@ -10,10 +12,10 @@ public class Reminder {
     private String notificationType;
     private String alarmTone;
     private String title;
-    private String time;
+    private Date time;
     private String reccurenceType;
 
-    public Reminder(int id, boolean alarmOn, String notificationType, String alarmTone, String title, String time, String reccurenceType) {
+    public Reminder(int id, boolean alarmOn, String notificationType, String alarmTone, String title, Date time, String reccurenceType) {
         this.id = id;
         this.alarmOn = alarmOn;
         this.notificationType = notificationType;
@@ -47,15 +49,15 @@ public class Reminder {
         this.title = title;
     }
 
-    public String getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
-    public boolean isAlarmOn() {
+    public boolean getAlarmOn() {
         return alarmOn;
     }
 

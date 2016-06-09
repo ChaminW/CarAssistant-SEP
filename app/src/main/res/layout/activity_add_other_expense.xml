@@ -45,7 +45,7 @@
                             android:layout_margin="10dp"
                             android:background="@android:color/transparent"
                             android:contextClickable="false"
-                            android:editable="false"
+                            android:inputType="none"
                             android:text="Category" />
 
                         <Spinner
@@ -227,7 +227,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Save GPS Location"
-                        />
+                        android:onClick="onGPSLocClick"                       />
 
 
                 </TableLayout>

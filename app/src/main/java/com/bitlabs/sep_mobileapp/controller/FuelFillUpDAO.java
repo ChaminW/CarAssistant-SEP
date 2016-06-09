@@ -1,5 +1,6 @@
 package com.bitlabs.sep_mobileapp.controller;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -27,23 +28,26 @@ public class FuelFillUpDAO extends DBhelper {
     public void setFillUp(FuelFillUp fuelFillUp) {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "INSERT INTO " + TABLE_FILLUP + " VALUES (?,?,?,?,?,?,?,?,?,?)";
+        ContentValues values = new ContentValues();
+        //String query = "INSERT INTO " + TABLE_FILLUP + " VALUES (?,?,?,?,?,?,?,?,?)";
 
         SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
         String strDate = dateFormater.format(fuelFillUp.getDate());
 
-        db.execSQL(query, new String[]{
-                String.valueOf(fuelFillUp.getId()),
-                strDate,
-                String.valueOf(fuelFillUp.getOdoMeter()),
-                String.valueOf(fuelFillUp.getCost()),
-                String.valueOf(fuelFillUp.getAmount()),
-                String.valueOf(fuelFillUp.getCostPerLiter()),
-                fuelFillUp.getFuelType(),
-                fuelFillUp.getIsFullTank() == true ? "true" : "false",
-                fuelFillUp.getLocation(),
-                fuelFillUp.getNote()
-        });
+        values.put("date", strDate);
+        values.put("odoMeter", fuelFillUp.getOdoMeter());
+        values.put("cost", fuelFillUp.getCost());
+        values.put("amount", fuelFillUp.getAmount());
+        values.put("costPerLiter", fuelFillUp.getCostPerLiter());
+        values.put("regNo", fuelFillUp.getRegNo());
+        values.put("isFullTank", fuelFillUp.getIsFullTank() == true ? "true" : "false");
+        values.put("latitude", fuelFillUp.getLatitide());
+        values.put("longitude ", fuelFillUp.getLongitude ());
+        values.put("note", fuelFillUp.getNote());
+
+        db.insert(TABLE_FILLUP, null, values);
+        System.out.println("fuelFill up added successfully");
+
         db.close();
 
 
@@ -54,33 +58,34 @@ public class FuelFillUpDAO extends DBhelper {
         List<FuelFillUp> array_list = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String query = "SELECT * FROM fuelFillUp";
+        String query = "SELECT * FROM " + TABLE_FILLUP;
         Cursor res = db.rawQuery(query, null);
-        res.moveToFirst();
+        // looping through all rows and adding to list
+        if (res.moveToFirst()) {
+            do {
+                array_list.add(convertToFuelFillUp(res));
 
-        while (res.isAfterLast() == false) {
-            array_list.add(convertToFuelFillUp(res));
-            res.moveToNext();
+            } while (res.moveToNext());
         }
+// return quest list
         db.close();
         return array_list;
     }
 
     public boolean deleteFuelFillUp(FuelFillUp fuelFillUp) {
         // remove existing details . if it is not in db give error.
-        SQLiteDatabase db= this.getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
         try {
-            db.delete(TABLE_FILLUP,"id" + "=?", new String[]{String.valueOf(fuelFillUp.getId())});
-            String msg ="FuelFillUp detail was deleted";
-            // toasting
+            db.delete(TABLE_FILLUP, "id" + "=?", new String[]{String.valueOf(fuelFillUp.getId())});
+            String msg = "FuelFillUp detail was deleted";
+            System.out.println(msg);
             return true;
-        }
-        catch (SQLiteException e) {
+        } catch (SQLiteException e) {
             String msg = "FuelFillUp detail is invalid. It can be already deleted";
+            System.out.println(msg);
             return false;
             // should give a error message
-        }
-        finally {
+        } finally {
             db.close();
         }
     }
@@ -91,13 +96,14 @@ public class FuelFillUpDAO extends DBhelper {
         double cost;
         String note;
         int odoMeter;
-        String fuelType;
+        String regNo;
         double amount;
         double costPerLiter;
-        String location;
+        double latitude;
+        double longitude;
         boolean isFullTank;
 
-        id =res.getInt(res.getColumnIndex("id"));
+        id = res.getInt(0);
         SimpleDateFormat dateF = new SimpleDateFormat("yyyy-MM-dd");
         date = null;
         try {
@@ -110,13 +116,14 @@ public class FuelFillUpDAO extends DBhelper {
         cost = res.getDouble(res.getColumnIndex("cost"));
         amount = res.getDouble(res.getColumnIndex("amount"));
         costPerLiter = res.getDouble(res.getColumnIndex("costPerLiter"));
-        fuelType=res.getString(res.getColumnIndex("fuelType"));
-        isFullTank= (res.getString(res.getColumnIndex("isFullTank")))=="true"? true  : false;
-        location=res.getString(res.getColumnIndex("location"));
-        note=res.getString(res.getColumnIndex("note"));
+        regNo = res.getString(res.getColumnIndex("regNo"));
+        isFullTank = (res.getString(res.getColumnIndex("isFullTank"))) == "true" ? true : false;
+        latitude = res.getDouble(res.getColumnIndex("latitude"));
+        longitude  = res.getDouble(res.getColumnIndex("longitude"));
+        note = res.getString(res.getColumnIndex("note"));
 
 
-        FuelFillUp tempFuelFillUp = new FuelFillUp(id,date,odoMeter,cost,amount,costPerLiter,fuelType,isFullTank,location,note);
+        FuelFillUp tempFuelFillUp = new FuelFillUp(id, date, odoMeter, cost, amount, costPerLiter, regNo, isFullTank, latitude,longitude, note);
         return tempFuelFillUp;
     }
 

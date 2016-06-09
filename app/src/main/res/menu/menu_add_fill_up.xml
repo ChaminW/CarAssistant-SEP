@@ -2,6 +2,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.bitlabs.sep_mobileapp.view.AddFillUp">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/addFillUp_spinner"
+        android:title="ActionBar Spinner"
+        app:actionViewClass="android.widget.Spinner"
+        android:background="#ff00"
+        app:showAsAction="ifRoom"
+        android:entries="@array/fuel_type_array"/>
+    <item
+        android:id="@+id/addFillUp_save"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="Save"
+        app:showAsAction="always"/>
+
+
+
 </menu>

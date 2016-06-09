@@ -12,13 +12,17 @@ public class Expense {
     private double cost;
     private String note;
     private int odoMeter;
+    private String regNo;
 
-    public Expense(int id, Date date, double cost, String note, int odoMeter) {
+
+
+    public Expense(int id, Date date, double cost, String note, int odoMeter, String regNo) {
         this.id = id;
         this.date = date;
         this.cost = cost;
         this.note = note;
         this.odoMeter = odoMeter;
+        this.regNo = regNo;
     }
 
     public int getId() {
@@ -59,5 +63,13 @@ public class Expense {
 
     public void setOdoMeter(int odoMeter) {
         this.odoMeter = odoMeter;
+    }
+
+    public String getRegNo() {
+        return regNo;
+    }
+
+    public void setRegNo(String regNo) {
+        this.regNo = regNo;
     }
 }

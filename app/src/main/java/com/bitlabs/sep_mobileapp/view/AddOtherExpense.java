@@ -1,15 +1,32 @@
 package com.bitlabs.sep_mobileapp.view;
 
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Criteria;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.bitlabs.sep_mobileapp.R;
+import com.bitlabs.sep_mobileapp.data.OtherExpense;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 public class AddOtherExpense extends AppCompatActivity {
+
+
+    OtherExpense otherExpense;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,4 +75,7 @@ public class AddOtherExpense extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
 }

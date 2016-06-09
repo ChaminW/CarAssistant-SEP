@@ -8,15 +8,25 @@ public class Vehicle {
     private String model;
     private String distanceUnit;
     private String fuelUnit;
+    private String fuelType;
     private String regNo;
     private String year;
 
-    public Vehicle(String model, String distanceUnit, String fuelUnit, String regNo, String year) {
+    public Vehicle(String model, String distanceUnit, String fuelUnit, String fuelType, String regNo, String year) {
         this.model = model;
         this.distanceUnit = distanceUnit;
         this.fuelUnit = fuelUnit;
+        this.fuelType = fuelType;
         this.regNo = regNo;
         this.year = year;
+    }
+
+    public String getFuelType() {
+        return fuelType;
+    }
+
+    public void setFuelType(String fuelType) {
+        this.fuelType = fuelType;
     }
 
     public String getRegNo() {

@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         ab.addTab(ab.newTab().setText("Tab 2").setTabListener(this));
         ab.addTab(ab.newTab().setText("Tab 3").setTabListener(this));
 
+
+
+
     }
 
     @Override
@@ -79,21 +82,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     }
 
 
-    public void OnAddFillClick(View view) {
-        Toast.makeText(this, "Enter a Fill up details", Toast.LENGTH_LONG).show();
-        Intent getAddFillIntent = new Intent(this, AddFillUp.class);
-        startActivity(getAddFillIntent);
 
-
-    }
-
-    public void OnOtherExpenseClick(View view) {
-
-        Toast.makeText(this, "Enter a Expense details", Toast.LENGTH_LONG).show();
-        Intent getAddExpenseIntent = new Intent(this, AddOtherExpense.class);
-        startActivity(getAddExpenseIntent);
-
-    }
 
     public void OnSettingsClicked(View view) {
 

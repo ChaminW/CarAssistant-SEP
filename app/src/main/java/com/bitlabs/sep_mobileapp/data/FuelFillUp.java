@@ -7,29 +7,32 @@ import java.util.Date;
  */
 public class FuelFillUp extends Expense {
 
-    private String fuelType;
+
     private double amount;
     private double costPerLiter;
-    private String location;
+    private double latitide;
+    private double longitude;
     private boolean isFullTank;
 
 
-    public FuelFillUp(int id, Date date,int odoMeter, double cost, double amount, double costPerLiter, String fuelType,  boolean isFullTank, String location, String note) {
-        super(id, date, cost, note, odoMeter);
+    public FuelFillUp(int id, Date date,int odoMeter, double cost, double amount, double costPerLiter, String regNo,  boolean isFullTank, double latitide, double longitude, String note) {
+        super(id, date, cost, note, odoMeter,regNo);
         this.isFullTank = isFullTank;
-        this.fuelType = fuelType;
+
         this.amount = amount;
         this.costPerLiter = costPerLiter;
-        this.location = location;
+        this.latitide = latitide;
+        this.longitude = longitude;
     }
 
 
-    public String getFuelType() {
-        return fuelType;
+
+    public boolean isFullTank() {
+        return isFullTank;
     }
 
-    public void setFuelType(String fuelType) {
-        this.fuelType = fuelType;
+    public void setFullTank(boolean fullTank) {
+        isFullTank = fullTank;
     }
 
     public double getAmount() {
@@ -48,12 +51,20 @@ public class FuelFillUp extends Expense {
         this.costPerLiter = costPerLiter;
     }
 
-    public String getLocation() {
-        return location;
+    public double getLatitide() {
+        return latitide;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLatitide(double latitide) {
+        this.latitide = latitide;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public boolean getIsFullTank() {

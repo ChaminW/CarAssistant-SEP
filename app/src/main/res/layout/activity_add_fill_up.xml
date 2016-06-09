@@ -3,12 +3,13 @@
     android:id="@+id/AddFillUp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#80838383"
+    android:background="#78212121"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+
     tools:context="com.bitlabs.sep_mobileapp.view.AddFillUp">
 
     <ScrollView
@@ -33,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Odo Count"
-                    android:inputType="number" />
+                    android:inputType="numberDecimal" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -46,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Fuel"
-                    android:inputType="number" />
+                    android:inputType="numberDecimal" />
             </android.support.design.widget.TextInputLayout>
 
 
@@ -60,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Total Cost"
-                    android:inputType="number" />
+                    android:inputType="numberDecimal" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -73,29 +74,31 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Price per"
-                    android:inputType="number" />
+                    android:inputType="numberDecimal" />
             </android.support.design.widget.TextInputLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                >
 
                 <EditText
                 android:id="@+id/editText5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:editable="false"
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:inputType="none"
                 android:background="@android:color/transparent"
                 android:text="Date"
-                android:layout_margin="10dp"/>
+
+                />
                 <DatePicker
                     android:id="@+id/addFillUp_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_row="3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+
                     android:calendarViewShown="false"
                     android:datePickerMode="spinner"
                     />
@@ -103,149 +106,23 @@
 
 
 
-            <!--<TableLayout
-                    <!-android:layout_width="fill_parent"-->
-            <!--android:layout_height="300dp"-->
-            <!--android:background="#daffffff"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:gravity="center"-->
-            <!--android:layout_margin="5dp"-->
-            <!-->-->
-
-
-            <!--<TableRow-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent">-->
-
-            <!--<EditText-->
-            <!--android:id="@+id/editText3"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Odo Counter"-->
-            <!--android:editable="false"-->
-            <!--android:background="@android:color/transparent"-->
-            <!--android:contextClickable="false"-->
-            <!--android:layout_margin="10dp"/>-->
-            <!--<EditText-->
-            <!--android:id="@+id/odoCount"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:ems="10"-->
-            <!--android:hint="0"-->
-            <!--android:inputType="number" />-->
-            <!--</TableRow>-->
-
-
-            <!--<TableRow-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent" >-->
-
-            <!--<EditText-->
-            <!--android:id="@+id/editText4"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:editable="false"-->
-            <!--android:background="@android:color/transparent"-->
-            <!--android:text="Fuel"-->
-            <!--android:layout_margin="10dp"/>-->
-
-            <!--<EditText-->
-            <!--android:id="@+id/fuelCount"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:ems="10"-->
-            <!--android:hint="00.00"-->
-            <!--android:inputType="number" />-->
-            <!--</TableRow>-->
-
-            <!--<TableRow-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent" >-->
-
-            <!--<EditText-->
-            <!--android:id="@+id/editText6"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:editable="false"-->
-            <!--android:background="@android:color/transparent"-->
-            <!--android:text="Total Cost"-->
-            <!--android:layout_margin="10dp"/>-->
-
-            <!--<EditText-->
-            <!--android:id="@+id/totalCost"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:ems="10"-->
-            <!--android:hint="00.00"-->
-            <!--android:inputType="number" />-->
-            <!--</TableRow>-->
-
-            <!--<TableRow-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent" >-->
-
-            <!--<EditText-->
-            <!--android:id="@+id/editText7"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:editable="false"-->
-            <!--android:background="@android:color/transparent"-->
-            <!--android:text="Price per"-->
-            <!--android:layout_margin="10dp"/>-->
-
-            <!--<EditText-->
-            <!--android:id="@+id/editText"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:ems="10"-->
-            <!--android:hint="00.00"-->
-            <!--android:inputType="number" />-->
-            <!--</TableRow>-->
-
-            <!--<TableRow-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content" >-->
-
-            <!--<EditText-->
-            <!--android:id="@+id/editText5"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:editable="false"-->
-            <!--android:background="@android:color/transparent"-->
-            <!--android:text="Date"-->
-            <!--android:layout_margin="10dp"/>-->
-
-            <!--<DatePicker-->
-            <!--android:id="@+id/date_selector"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_column="1"-->
-            <!--android:layout_row="3"-->
-            <!--android:calendarViewShown="false"-->
-            <!--android:datePickerMode="spinner" />-->
-
-            <!--</TableRow>-->
-
-
-            <!--</TableLayout>-->
-
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:background="#ffffff"
+
                 android:orientation="vertical"
 
                 >
 
                 <CheckBox
-                    android:id="@+id/checkBox2"
+                    android:id="@+id/addFillUp_FullTank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Full tank" />
 
                 <CheckBox
-                    android:id="@+id/checkBox"
+                    android:id="@+id/addFillUp_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Save GPS Location" />
@@ -255,7 +132,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/note"
+                        android:id="@+id/addFillUp_note"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="20"
@@ -274,29 +151,29 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_margin="5dp"
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_margin="5dp"-->
 
-                android:gravity="center"
-                android:orientation="horizontal">
+                <!--android:gravity="center"-->
+                <!--android:orientation="horizontal">-->
 
-                <Button
-                    android:id="@+id/saveBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="OnFillUpSave"
-                    android:text="Save"></Button>
+                <!--<Button-->
+                    <!--android:id="@+id/saveBtn"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:onClick="OnFillUpSave"-->
+                    <!--android:text="Save"></Button>-->
 
-                <Button
-                    android:id="@+id/cancelBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cancel"></Button>
+                <!--<Button-->
+                    <!--android:id="@+id/cancelBtn"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Cancel"></Button>-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
         </LinearLayout>
     </ScrollView>

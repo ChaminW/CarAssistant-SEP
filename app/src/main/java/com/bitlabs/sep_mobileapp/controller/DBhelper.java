@@ -11,7 +11,7 @@ import android.util.Log;
 public abstract class DBhelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "carAssistant.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
 
     public static final String TABLE_FILLUP = "fuelFillUp";
     public static final String TABLE_OTHEREXPENSE = "otherExpense";
@@ -32,11 +32,12 @@ public abstract class DBhelper extends SQLiteOpenHelper {
                 "date" + " text not null, " +
                 "odoMeter" + " integer, " +
                 "cost" + " real, " +
-                "amount" + " real not null, " +
-                "costPerLiter" +" real not null, " +
-                "fuelType" + " text not null, " +
+                "amount" + " real, " +
+                "costPerLiter" +" real, " +
+                "regNo" + " text not null, " +
                 "isFullTank" + " numeric not null," +
-                "location" + " text, " +
+                "latitude" + " real, " +
+                "longitude " + " real, " +
                 "note" + " text " +
                 ");");
     /*
@@ -57,6 +58,7 @@ public abstract class DBhelper extends SQLiteOpenHelper {
         db.execSQL("create table "
                 + TABLE_OTHEREXPENSE + "(" +
                 "Id" + " integer primary key autoincrement, " +
+                "regNo"+ " text not null, "+
                 "title" + " text not null, " +
                 "date" + " text, " +
                 "odoMeter" + " integer, " +
@@ -82,6 +84,7 @@ public abstract class DBhelper extends SQLiteOpenHelper {
                 "regNo" + " integer primary key autoincrement, " +
                 "model" + " text, " +
                 "year" + " text, " +
+                "fuelType"+" text," +
                 "fuelUnit" + " text, " +
                 "distanceUnit" + " text " +
                 ");");
@@ -102,11 +105,14 @@ public abstract class DBhelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_OTHEREXPENSE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_REMINDER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_REMINDER);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_VEHICLE);
 
         onCreate(db);
 
 
     }
+
+
 }
 
 
