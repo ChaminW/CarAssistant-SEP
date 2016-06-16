@@ -40,11 +40,40 @@ public class OtherExpenseDAO extends DBhelper {
         values.put("cost", otherExpense.getCost());
         values.put("category", otherExpense.getCategory());
         values.put("reccurenceType", otherExpense.getReccurenceType());
+        values.put("latitude", otherExpense.getLatitude());
+        values.put("longitude", otherExpense.getLongitude());
         values.put("note", otherExpense.getNote());
 
         db.insert(TABLE_OTHEREXPENSE, null, values);
         db.close();
         System.out.println("other expense is added added.");
+
+    }
+
+    public void updateOtherExpense(OtherExpense otherExpense) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate = dateFormater.format(otherExpense.getDate());
+
+        values.put("regNo", otherExpense.getRegNo());
+        values.put("title", otherExpense.getTitle());
+        values.put("date", strDate);
+        values.put("odoMeter", otherExpense.getOdoMeter());
+        values.put("cost", otherExpense.getCost());
+        values.put("category", otherExpense.getCategory());
+        values.put("reccurenceType", otherExpense.getReccurenceType());
+        values.put("latitude", otherExpense.getLatitude());
+        values.put("longitude", otherExpense.getLongitude());
+        values.put("note", otherExpense.getNote());
+
+        db.update(TABLE_OTHEREXPENSE, values, "Id = ? ", new String[]{Integer.toString(otherExpense.getId())});
+        System.out.println("Other expense updated successfully");
+
+        db.close();
+
 
     }
 
@@ -58,7 +87,7 @@ public class OtherExpenseDAO extends DBhelper {
 
         if (res.moveToFirst()) {
             do {
-            array_list.add(convertToOtherExpense(res));
+                array_list.add(convertToOtherExpense(res));
 
             } while (res.moveToNext());
         }
@@ -71,7 +100,7 @@ public class OtherExpenseDAO extends DBhelper {
         // remove existing details . if it is not in db give error.
         SQLiteDatabase db = this.getWritableDatabase();
         try {
-            db.delete(TABLE_OTHEREXPENSE, "id" + "=?", new String[]{String.valueOf(otherExpense.getId())});
+            db.delete(TABLE_OTHEREXPENSE, "Id" + "=?", new String[]{String.valueOf(otherExpense.getId())});
 
             return true;
         } catch (SQLiteException e) {
@@ -81,6 +110,42 @@ public class OtherExpenseDAO extends DBhelper {
         } finally {
             db.close();
         }
+    }
+
+    public ArrayList<OtherExpense> getOtherExpenseAsRegNo(String regNo) {
+        SQLiteDatabase db;
+        ArrayList<OtherExpense> array_list = new ArrayList<OtherExpense>();
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + TABLE_OTHEREXPENSE + " WHERE regNo = '" + regNo + "' ORDER BY date DESC";
+        db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                array_list.add(convertToOtherExpense(cursor));
+            } while (cursor.moveToNext());
+        }
+// return quest list
+
+        return array_list;
+    }
+
+
+    public OtherExpense getOtherExpenseAsId(int Id) {
+        SQLiteDatabase db;
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + TABLE_OTHEREXPENSE + " WHERE Id = '" + Id + "'";
+
+        db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        OtherExpense otherExpense;
+        if (cursor.moveToFirst()) {
+            otherExpense = convertToOtherExpense(cursor);
+        } else {
+            otherExpense = null;
+        }
+        return otherExpense;
     }
 
 
@@ -95,6 +160,8 @@ public class OtherExpenseDAO extends DBhelper {
         String category;
         String title;
         String reccurenceType;
+        Double latitude;
+        Double longitude;
 
 
         id = res.getInt(0);
@@ -112,10 +179,12 @@ public class OtherExpenseDAO extends DBhelper {
         cost = res.getDouble(res.getColumnIndex("cost"));
         category = res.getString(res.getColumnIndex("category"));
         reccurenceType = res.getString(res.getColumnIndex("reccurenceType"));
+        latitude = res.getDouble(res.getColumnIndex("latitude"));
+        longitude = res.getDouble(res.getColumnIndex("longitude"));
         note = res.getString(res.getColumnIndex("note"));
 
 
-        OtherExpense tempOtherExpense = new OtherExpense(id, date, cost, note, odoMeter, category, title, reccurenceType,regNo);
+        OtherExpense tempOtherExpense = new OtherExpense(id, date, cost, note, odoMeter, category, title, reccurenceType, regNo, latitude, longitude);
         return tempOtherExpense;
     }
 

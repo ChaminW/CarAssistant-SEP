@@ -3,27 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.bitlabs.sep_mobileapp.view.ExpenseLogFragment"
+    tools:context=".view.fragment.ExpenseLogFragment"
     android:background="#FFFFFF">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Expense log Fragment"
-
-
-        />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/addFillUp_fab"
+        android:id="@+id/addExpense_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:src="@android:drawable/ic_input_add"
         android:onClick="OnOtherExpenseClick"
-        app:backgroundTint="#ff0000"
+        app:backgroundTint="#33ff00"
         />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/expense_listView"
+        android:layout_gravity="center"
+        android:background="#b6b3b3b3"/>
 
 </FrameLayout>

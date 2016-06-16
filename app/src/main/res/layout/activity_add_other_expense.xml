@@ -8,14 +8,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.bitlabs.sep_mobileapp.view.AddOtherExpense">
+    tools:context=".view.activity.AddOtherExpense">
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="true"
-        android:scrollbarStyle = "insideInset">
+        android:scrollbarStyle="insideOverlay">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,157 +23,139 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_margin="5dp"
                 android:background="#daffffff"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
 
-                <TableLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
 
-                    <TableRow
-                        android:gravity="center">
+                    <EditText
+                        android:id="@+id/editText3"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:focusable="false"
+                        android:background="@android:color/transparent"
+                        android:text="Category" />
 
-                        <EditText
-                            android:id="@+id/editText3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@android:color/transparent"
-                            android:contextClickable="false"
-                            android:inputType="none"
-                            android:text="Category" />
-
-                        <Spinner
-                            android:id="@+id/categorySpinner"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
-
-                    </TableRow>
-
-                    <TableRow
-
-                        android:gravity="center">
+                    <Spinner
+                        android:id="@+id/addExpense_CategorySpinner"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/Expense_category_array" />
 
 
-                        <EditText
-                            android:id="@+id/editText4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@android:color/transparent"
-                            android:editable="false"
-                            android:text="Title" />
+                </LinearLayout>
 
 
-                        <EditText
-                            android:id="@+id/fuelCount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:hint=""
-                            android:inputType="textAutoCorrect" />
-                    </TableRow>
-
-                    <TableRow
-
-                        android:gravity="center">
-
-                        <EditText
-                            android:id="@+id/editText6"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@android:color/transparent"
-                            android:editable="false"
-                            android:text="Cost" />
-
-                        <EditText
-                            android:id="@+id/totalCost"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:hint="00.00"
-                            android:inputType="number" />
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
 
-                    </TableRow>
+                    <EditText
+                        android:id="@+id/addExpense_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Title"
+                        android:inputType="textAutoCorrect" />
+                </android.support.design.widget.TextInputLayout>
 
 
-                    <TableRow
-                        android:gravity="center"
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                        >
+                    <EditText
+                        android:id="@+id/addExpense_cost"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:maxLength="7"
 
-                        <EditText
-                            android:id="@+id/editText5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@android:color/transparent"
-                            android:editable="false"
-                            android:text="Date"
-
-                            />
+                        android:hint="Cost"
+                        android:inputType="numberDecimal" />
+                </android.support.design.widget.TextInputLayout>
 
 
-                        <DatePicker
-                            android:id="@+id/date_selector"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_column="1"
-                            android:layout_row="3"
-                            android:calendarViewShown="false"
-                            android:datePickerMode="spinner" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                    </TableRow>
-                </TableLayout>
+                    <EditText
+                        android:id="@+id/editText5"
+
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:focusable="false"
+                        android:background="@android:color/transparent"
+                        android:text="Date"
+
+                        />
+
+
+                    <DatePicker
+                        android:id="@+id/addExpense_datePicker"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_row="3"
+                        android:calendarViewShown="false"
+                        android:datePickerMode="spinner" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:background="#ffffff"
-                android:layout_margin="5dp">
-
-                <TableLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent">
-
-                    <TableRow
-                        android:gravity="center">
-
-                        <EditText
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@android:color/transparent"
-                            android:contextClickable="false"
-                            android:editable="false"
-                            android:text="Recurrence" />
-
-                        <Spinner
-                            android:id="@+id/recurrenceSpinner"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content" />
+                android:orientation="vertical">
 
 
-                    </TableRow>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                    <CheckBox
-                        android:id="@+id/checkBox2"
-                        android:layout_width="wrap_content"
+                    <EditText
+
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Reminde me" />
-                </TableLayout>
+                        android:layout_margin="10dp"
+                        android:focusable="false"
+                        android:background="@android:color/transparent"
+                        android:text="Recurrence Type" />
+
+                    <Spinner
+                        android:id="@+id/addExpense_recurrenceTypeSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/recurrence_type_array"/>
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/addExpense_isReminder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Remind me" />
+
+
             </LinearLayout>
 
             <LinearLayout
@@ -185,52 +167,44 @@
 
                 >
 
-                <TableLayout
+
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TableRow
-                        android:gravity="center">
-
-                        <EditText
-                            android:id="@+id/editText7"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@android:color/transparent"
-                            android:editable="false"
-                            android:text="Odometer" />
-
-
-                        <EditText
-                            android:id="@+id/editText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:hint="00.00"
-                            android:inputType="number" />
-
-                    </TableRow>
+                    android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/Note"
+                        android:id="@+id/addExpense_odoMeter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="20"
+                        android:hint="Odometer"
+                        android:inputType="number"
+                        android:maxLength="9"/>
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/addExpense_note"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="20"
                         android:hint="Note"
-                        android:inputType="textMultiLine"
-                        />
+                        android:inputType="textMultiLine" />
+                </android.support.design.widget.TextInputLayout>
 
 
-                    <CheckBox
-                        android:id="@+id/checkBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Save GPS Location"
-                        android:onClick="onGPSLocClick"                       />
+                <CheckBox
+                    android:id="@+id/addExpense_isLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Save GPS Location" />
 
 
-                </TableLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -246,7 +220,8 @@
                     android:id="@+id/saveBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Save"></Button>
+                    android:text="Save"
+                    android:onClick="OnOtherExpensexSaveClick"></Button>
 
                 <Button
                     android:id="@+id/cancelBtn"

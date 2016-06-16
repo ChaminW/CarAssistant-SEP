@@ -5,47 +5,72 @@ package com.bitlabs.sep_mobileapp.view.viewModel;
  */
 public class Bean {
 
-    private int image;
-    private String title;
-    private String discription;
-    private String date;
+    private String image;
+    private String model;
+    private String regNo;
+    private String year;
+    private String fuelType;
+    private String fuelUnit;
 
-    public Bean(int image, String title, String discription, String date) {
+
+
+
+    public Bean(String image, String model, String regNo, String year, String fuelType, String fuelUnit) {
         this.image = image;
-        this.title = title;
-        this.discription = discription;
-        this.date = date;
+        this.model = model;
+        this.regNo = regNo;
+        this.year = year;
+        this.fuelType = fuelType;
+        this.fuelUnit = fuelUnit;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    public String getTitle() {
-        return title;
+    public String getModel() {
+        return model;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    public String getDiscription() {
-        return discription;
+    public String getRegNo() {
+        return regNo;
     }
 
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setRegNo(String regNo) {
+        this.regNo = regNo;
     }
 
-    public String getDate() {
-        return date;
+    public String getYear() {
+        return year;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setYear(String year) {
+        this.year = year;
     }
+
+    public String getFuelType() {
+        return fuelType;
+    }
+
+    public void setFuelType(String fuelType) {
+        this.fuelType = fuelType;
+    }
+
+    public String getFuelUnit() {
+        return fuelUnit;
+    }
+
+    public void setFuelUnit(String fuelUnit) {
+        this.fuelUnit = fuelUnit;
+    }
+
+
 }

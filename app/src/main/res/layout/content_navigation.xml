@@ -6,13 +6,17 @@
     android:layout_height="match_parent"
 
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.bitlabs.sep_mobileapp.view.Navigation"
-    tools:showIn="@layout/app_bar_navigation">
+    tools:context=".view.activity.Navigation"
+    tools:showIn="@layout/app_bar_navigation"
+    android:background="#b6b3b3b3">
 
     <FrameLayout
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+
         >
     </FrameLayout>
 </RelativeLayout>

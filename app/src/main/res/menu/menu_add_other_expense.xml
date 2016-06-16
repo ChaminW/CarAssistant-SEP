@@ -1,17 +1,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.bitlabs.sep_mobileapp.view.AddOtherExpense">
+    tools:context=".view.activity.AddOtherExpense">
 
     <item
-        android:id="@+id/addOtherExpense_spinner"
+        android:id="@+id/vehicleSelectSpinner"
         android:title="ActionBar Spinner"
         app:actionViewClass="android.widget.Spinner"
-        android:background="#ff00"
-        app:showAsAction="ifRoom"
-        android:entries="@array/fuel_type_array"/>
+        app:showAsAction="always"
+        />
+    <!--<item-->
+    <!--android:id="@+id/btnDelete"-->
+    <!--android:icon="@android:drawable/ic_menu_delete"-->
+    <!--android:title="Delete"-->
+    <!--app:showAsAction="always"-->
+    <!--/>-->
     <item
-        android:id="@+id/addOtherExpense_save"
+        android:id="@+id/btnSave"
         android:icon="@android:drawable/ic_menu_save"
         android:title="Save"
         app:showAsAction="always"/>

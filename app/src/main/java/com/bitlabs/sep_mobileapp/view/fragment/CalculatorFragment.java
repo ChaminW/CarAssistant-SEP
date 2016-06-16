@@ -1,30 +1,32 @@
-package com.bitlabs.sep_mobileapp.view;
+package com.bitlabs.sep_mobileapp.view.fragment;
 
-
-import android.content.Context;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTabHost;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.bitlabs.sep_mobileapp.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Home.OnFragmentInteractionListener} interface
+ * {@link CalculatorFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Home#newInstance} factory method to
+ * Use the {@link CalculatorFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Home extends Fragment implements ActionBar.TabListener {
+public class CalculatorFragment extends Fragment {
+
+    View view;
+    EditText ETamount;
+    EditText ETperCost;
+    EditText ETcost;
+    Button BtnCalc;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -36,7 +38,7 @@ public class Home extends Fragment implements ActionBar.TabListener {
 
     private OnFragmentInteractionListener mListener;
 
-    public Home() {
+    public CalculatorFragment() {
         // Required empty public constructor
     }
 
@@ -46,11 +48,11 @@ public class Home extends Fragment implements ActionBar.TabListener {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Home.
+     * @return A new instance of fragment CalculatorFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Home newInstance(String param1, String param2) {
-        Home fragment = new Home();
+    public static CalculatorFragment newInstance(String param1, String param2) {
+        CalculatorFragment fragment = new CalculatorFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,45 +67,24 @@ public class Home extends Fragment implements ActionBar.TabListener {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
-
     }
-    public FragmentTabHost mTabHost;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mTabHost = new FragmentTabHost(getActivity());
-        mTabHost.setup(getActivity(), getChildFragmentManager(), R.layout.fragment_home);
-
-        Bundle arg1 = new Bundle();
-        arg1.putInt("Arg for Frag1", 1);
-        mTabHost.addTab(mTabHost.newTabSpec("Fuel_Log").setIndicator("Fuel Log"),
-                FillUpLogFragment.class, arg1);
-
-        Bundle arg2 = new Bundle();
-        arg2.putInt("Arg for Frag2", 2);
-        mTabHost.addTab(mTabHost.newTabSpec("Expense_Log").setIndicator("Expense Log"),
-                ExpenseLogFragment.class, arg2);
-        Bundle arg3 = new Bundle();
-        arg2.putInt("Arg for Frag3", 3);
-        mTabHost.addTab(mTabHost.newTabSpec("Calculator").setIndicator("Calculator"),
-                CalculatorFragment.class, arg3);
 
 
-        mTabHost.setBackgroundColor(0xD2212121);
-        return mTabHost;
+        view = inflater.inflate(R.layout.fragment_expense_log, container, false);
+
+        ETamount= (EditText) view.findViewById(R.id.calculator_amount);
+        ETperCost= (EditText) view.findViewById(R.id.calculator_cost_per);
+        ETcost=(EditText) view.findViewById(R.id.calculator_cost);
+        BtnCalc= (Button) view.findViewById(R.id.calculator_cal_btn);
 
 
 
-
-
-
-
-
-
-
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -114,26 +95,10 @@ public class Home extends Fragment implements ActionBar.TabListener {
     }
 
 
-
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-    }
-
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-    }
-
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
     }
 
     /**

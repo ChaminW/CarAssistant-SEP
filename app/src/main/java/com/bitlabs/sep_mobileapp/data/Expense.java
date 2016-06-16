@@ -13,16 +13,38 @@ public class Expense {
     private String note;
     private int odoMeter;
     private String regNo;
+    private Double latitude;
+    private Double longitude;
 
 
 
-    public Expense(int id, Date date, double cost, String note, int odoMeter, String regNo) {
+
+
+    public Expense(int id, Date date, double cost, String note, int odoMeter, String regNo, Double latitude, Double longitude) {
         this.id = id;
         this.date = date;
         this.cost = cost;
         this.note = note;
         this.odoMeter = odoMeter;
         this.regNo = regNo;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
     public int getId() {

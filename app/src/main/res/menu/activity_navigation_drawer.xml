@@ -12,7 +12,10 @@
             android:icon="@drawable/ic_directions_car_black_24dp"
             android:title="Vehicles" />
 
-
+        <item
+            android:id="@+id/nav_reminder"
+            android:icon="@android:drawable/ic_popup_reminder"
+            android:title="Reminder" />
 
     </group>
 
@@ -27,6 +30,10 @@
                     android:id="@+id/nav_AddFuel"
                     android:icon="@drawable/ic_gas_station_white_48dp"
                     android:title="Add Fuel" />
+                <item
+                    android:id="@+id/nav_FuelLog"
+                    android:icon="@android:drawable/ic_menu_sort_by_size"
+                    android:title="Fuel Log" />
                 <item
                     android:id="@+id/nav_FuelCharts"
                     android:icon="@drawable/ic_show_chart_black_24dp"
@@ -49,6 +56,10 @@
                     android:icon="@drawable/ic_attach_money_black_24dp"
                     android:title="Add Expense" />
                 <item
+                    android:id="@+id/nav_ExpenseLog"
+                    android:icon="@android:drawable/ic_menu_sort_by_size"
+                    android:title="Expense Log" />
+                <item
                     android:id="@+id/nav_ExpenseCharts"
                     android:icon="@drawable/ic_show_chart_black_24dp"
                     android:title="Charts" />
@@ -64,13 +75,19 @@
             <group android:checkableBehavior="single">
 
                 <item
-                    android:id="@+id/nav_Settings"
-                    android:icon="@android:drawable/ic_menu_manage"
-                    android:title="Settings" />
-                <item
                     android:id="@+id/nav_GoogleDriveBackUp"
                     android:icon="@android:drawable/ic_menu_save"
                     android:title="Google Backup" />
+
+                <item
+                    android:id="@+id/nav_Instruction"
+                    android:icon="@android:drawable/ic_menu_manage"
+                    android:title="Instruction" />
+                <item
+                    android:id="@+id/nav_Settings"
+                    android:icon="@android:drawable/ic_menu_manage"
+                    android:title="Settings" />
+
             </group>
         </menu>
     </item>

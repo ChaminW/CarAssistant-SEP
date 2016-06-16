@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ActivateVehicle"
+        android:title="Activate"/>
+
+    <item
+        android:id="@+id/EditVehicle"
+        android:title="Edit"
+        />
+
+    <item
+        android:id="@+id/DeleteVehicle"
+        android:title="Delete"/>
+
+</menu>

@@ -10,8 +10,8 @@ import android.util.Log;
  */
 public abstract class DBhelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "carAssistant.db";
-    private static final int DATABASE_VERSION = 3;
+    public static final String DATABASE_NAME = "carAssistant_4.db";
+    private static final int DATABASE_VERSION = 1;
 
     public static final String TABLE_FILLUP = "fuelFillUp";
     public static final String TABLE_OTHEREXPENSE = "otherExpense";
@@ -40,19 +40,6 @@ public abstract class DBhelper extends SQLiteOpenHelper {
                 "longitude " + " real, " +
                 "note" + " text " +
                 ");");
-    /*
-    * id
-    * date
-    * odoMeter
-    * cost
-    * amount
-    * costPerLiter
-    * fuelType
-    * isFullTank
-    * location
-    * note
-    * */
-
 
 
         db.execSQL("create table "
@@ -65,6 +52,8 @@ public abstract class DBhelper extends SQLiteOpenHelper {
                 "cost" + " real, " +
                 "category" + " text not null, " +
                 "reccurenceType" + " text, " +
+                "latitude" + " real, " +
+                "longitude " + " real, " +
                 "note" + " text " +
                 ");");
 
@@ -81,15 +70,16 @@ public abstract class DBhelper extends SQLiteOpenHelper {
                 ");");
         db.execSQL("create table "
                 + TABLE_VEHICLE + "(" +
-                "regNo" + " integer primary key autoincrement, " +
+                "regNo" + " text primary key , " +
                 "model" + " text, " +
                 "year" + " text, " +
                 "fuelType"+" text," +
                 "fuelUnit" + " text, " +
-                "distanceUnit" + " text " +
+                "distanceUnit" + " text, " +
+                "image" + " text " +
                 ");");
 
-        Log.w(DBhelper.class.getName(), " data base is created");
+        Log.d(DBhelper.class.getName(), " data base is created");
 
     }
 
@@ -111,6 +101,18 @@ public abstract class DBhelper extends SQLiteOpenHelper {
 
 
     }
+
+    public  void clearAll(){
+        SQLiteDatabase db =getWritableDatabase();
+        db.execSQL("drop TABLE IF EXISTS" + TABLE_FILLUP);
+        db.execSQL("drop TABLE IF EXISTS" + TABLE_OTHEREXPENSE);
+        db.execSQL("drop TABLE IF EXISTS" + TABLE_REMINDER);
+        db.execSQL("drop TABLE IF EXISTS" + TABLE_VEHICLE);
+
+
+
+    }
+
 
 
 }

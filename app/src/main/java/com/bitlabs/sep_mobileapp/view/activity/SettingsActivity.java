@@ -1,4 +1,4 @@
-package com.bitlabs.sep_mobileapp.view;
+package com.bitlabs.sep_mobileapp.view.activity;
 
 import android.annotation.TargetApi;
 import android.content.Context;

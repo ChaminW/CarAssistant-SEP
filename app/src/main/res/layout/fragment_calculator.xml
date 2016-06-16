@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bitlabs.sep_mobileapp.view.ExpenseLogFragment"
+    tools:context=".view.fragment.ExpenseLogFragment"
     android:background="#FFFFFF"
     >
 
@@ -18,89 +18,9 @@
 
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
 
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="First Name" />
-
-
-            </android.support.design.widget.TextInputLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10pt"
-                android:layout_marginRight="10pt"
-                android:layout_marginTop="3pt">
-
-                <EditText
-                    android:id="@+id/etNum1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5pt"
-                    android:layout_weight="1"
-                    android:inputType="numberDecimal"></EditText>
-
-                <EditText
-                    android:id="@+id/etNum2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5pt"
-                    android:layout_weight="1"
-                    android:inputType="numberDecimal"></EditText>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5pt"
-                android:layout_marginRight="5pt"
-                android:layout_marginTop="3pt">
-
-                <Button
-                    android:id="@+id/btnAdd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="+"
-                    android:textSize="8pt"></Button>
-
-                <Button
-                    android:id="@+id/btnSub"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="-"
-                    android:textSize="8pt"></Button>
-
-                <Button
-                    android:id="@+id/btnMult"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="*"
-                    android:textSize="8pt"></Button>
-
-                <Button
-                    android:id="@+id/btnDiv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="/"
-                    android:textSize="8pt"></Button>
-            </LinearLayout>
-
+            android:gravity="center_horizontal">
             <TextView
                 android:id="@+id/tvResult"
                 android:layout_width="match_parent"
@@ -109,21 +29,77 @@
                 android:layout_marginRight="5pt"
                 android:layout_marginTop="3pt"
                 android:gravity="center_horizontal"
-                android:textSize="12pt"></TextView>
+                android:textSize="14pt"
+                android:text="Calculate Fuel Cost"></TextView>
 
-            <EditText
-                android:id="@+id/editText2"
-                android:layout_width="wrap_content"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/editText"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignRight="@+id/editText"
-                android:layout_below="@+id/editText"
-                android:ems="10"
-                android:hint="Password"
 
-                android:inputType="textPassword" />
+                >
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Fuel amount(liters)"
+
+                    android:inputType="numberDecimal"
+                    android:id="@+id/calculator_amount"/>
+
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Cost Per Liter ($/Liter)"
+                    android:inputType="numberDecimal"
+                    android:id="@+id/calculator_cost_per"/>
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5pt"
+                android:layout_marginRight="5pt"
+                android:layout_marginTop="3pt"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/calculator_cal_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Calculate"
+                    android:textSize="9pt"
+                    android:padding="15dp"
+                    ></Button>
+
+
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Cost($)"
+                    android:id="@+id/calculator_cost"
+
+                    />
+
+
+            </android.support.design.widget.TextInputLayout>
 
 
         </LinearLayout>

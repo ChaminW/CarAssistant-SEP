@@ -7,9 +7,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.bitlabs.sep_mobileapp.view.AddVehicle">
+    tools:context=".view.activity.AddVehicle">
 
-
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbarStyle="insideOverlay">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_margin="5dp"
-                android:background="@drawable/car_image2"/>
+                android:background="@drawable/car_image2" />
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/btnSelectImage"
@@ -53,12 +58,15 @@
             android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/addRegNo"
+                android:id="@+id/addVehicle_RegNo"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Register No"
-                android:inputType="text" />
+                android:inputType="textCapCharacters"
+
+
+                />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -66,7 +74,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/addModel"
+                android:id="@+id/addVehicle_Model"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -80,18 +88,20 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/addYear"
+                android:id="@+id/addVehicle_Year"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="year"
-                android:inputType="date" />
+                android:inputType="number"
+                android:maxLength="4"
+                />
         </android.support.design.widget.TextInputLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <EditText
@@ -100,18 +110,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
+                android:focusable="false"
                 android:background="@android:color/transparent"
-                android:contextClickable="false"
-                android:editable="false"
-                android:text="Category" />
+                android:text="Fuel Type" />
 
             <Spinner
-                android:id="@+id/fuelTypeSpinner"
+                android:id="@+id/addVehicle_fuelTypeSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:drawSelectorOnTop="true"
                 android:entries="@array/fuel_type_array"
-                android:layout_gravity="center"
 
                 />
         </LinearLayout>
@@ -119,7 +128,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <EditText
@@ -128,23 +137,49 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@android:color/transparent"
-                android:contextClickable="false"
-                android:editable="false"
-                android:text="Fuel Unit Type" />
+                android:focusable="false"
+                android:text="Fuel Unit" />
 
             <Spinner
 
-                android:id="@+id/distanceUnitSpinner"
+                android:id="@+id/addVehicle_fuelUnitSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawSelectorOnTop="true"
-                android:entries="@array/distance_unit_array"
+                android:entries="@array/fuel_unit_array"
 
                 />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editText42"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@android:color/transparent"
+                android:focusable="false"
+                android:text="Distance Unit" />
+
+            <Spinner
+                android:id="@+id/addVehicle_distanceUnitSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawSelectorOnTop="true"
+                android:entries="@array/distance_unit_array"
+
+                />
+        </LinearLayout>
+
     </LinearLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

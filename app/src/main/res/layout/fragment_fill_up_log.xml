@@ -4,16 +4,18 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFFFFF"
-    tools:context="com.bitlabs.sep_mobileapp.view.FillUpLogFragment">
+    tools:context=".view.fragment.FillUpLogFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Fill up log Fragment" />
+        android:id="@+id/fillUp_listView"
+        android:layout_gravity="center"
+        android:background="#b6b3b3b3"/>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/addExpense_fab"
+        android:id="@+id/addFillUp_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

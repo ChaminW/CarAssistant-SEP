@@ -24,6 +24,7 @@
 
     <string-array name="recurrence_type_array">
         <item>One-time</item>
+        <item>Weekly</item>
         <item>Monthly</item>
         <item>Annually</item>
 
@@ -40,12 +41,22 @@
     <string-array name="fuel_type_array">
         <item>Petrol</item>
         <item>Diesel</item>
+        <item>Ethanol</item>
+        <item>Electric</item>
         <item>LPG Autogas</item>
+    </string-array>
+
+    <string-array name="fuel_unit_array">
+        <item>Litre</item>
+        <item>Gallon(USA)</item>
+        <item>Gallon(UK)</item>
+        <item>kWh</item>
+        <item>Kg(gas)</item>
     </string-array>
 
     <string-array name="distance_unit_array">
         <item>kilometre(km)</item>
-        <item>international mile (mi)</item>
+        <item>mile (mi)</item>
 
     </string-array>
 

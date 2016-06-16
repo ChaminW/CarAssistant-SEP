@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
 import com.bitlabs.sep_mobileapp.R;
+import com.bitlabs.sep_mobileapp.data.FuelFillUp;
 import com.bitlabs.sep_mobileapp.data.OtherExpense;
 import com.bitlabs.sep_mobileapp.data.Reminder;
 
@@ -48,10 +49,33 @@ public class ReminderDAO extends DBhelper {
 
 
     }
+    public void updateRemider(Reminder reminder) {
 
-    public List<Reminder> getAllReminder() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
+        String strTime = dateFormater.format(reminder.getTime());
+
+        values.put("time", strTime);
+        values.put("title", reminder.getTitle());
+        values.put("isAlarmOn", reminder.getAlarmOn() == true ? "true" : "false");
+        values.put("notificationType", reminder.getNotificationType());
+        values.put("reccurenceType", reminder.getReccurenceType());
+
+        db.update(TABLE_REMINDER,values,"Id = ? ", new String[] { Integer.toString(reminder.getId()) } );
+        System.out.println("reminder updated successfully");
+
+        db.close();
+
+
+    }
+
+
+
+    public ArrayList<Reminder> getAllReminder() {
         //give all other Expense details
-        List<Reminder> array_list = new ArrayList<>();
+        ArrayList<Reminder> array_list = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
         String query = "SELECT * FROM " + TABLE_REMINDER;
@@ -66,11 +90,11 @@ public class ReminderDAO extends DBhelper {
         return array_list;
     }
 
-    public boolean deleteReminder(Reminder reminder) {
+    public boolean deleteReminder(int Id) {
         // remove existing details . if it is not in db give error.
         SQLiteDatabase db = this.getWritableDatabase();
         try {
-            db.delete(TABLE_REMINDER, "id" + "=?", new String[]{String.valueOf(reminder.getId())});
+            db.delete(TABLE_REMINDER, "id" + "=?", new String[]{String.valueOf(Id)});
             System.out.println("reminder deleted");
             return true;
         } catch (SQLiteException e) {
@@ -83,6 +107,22 @@ public class ReminderDAO extends DBhelper {
     }
 
 
+
+
+    public Reminder getReminderAsId(int Id) {
+        SQLiteDatabase db;
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + TABLE_REMINDER + " WHERE Id = '" + Id + "'";
+
+        db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        cursor.moveToFirst();
+        Reminder reminder = convertToReminder(cursor);
+
+        return reminder;
+    }
+
+
     private Reminder convertToReminder(Cursor res) {
 
         int id;
@@ -90,21 +130,21 @@ public class ReminderDAO extends DBhelper {
         String notificationType;
         String alarmTone;
         String title;
-        String time;
+        Date srtTime = null;
         String reccurenceType;
 
 
         id = res.getInt(0);
         title = res.getString(res.getColumnIndex("title"));
         SimpleDateFormat dateF = new SimpleDateFormat("yyyy-MM-dd");
-        Date srtTime = null;
+
         try {
             srtTime = dateF.parse(res.getString(res.getColumnIndex("time")));
 
         } catch (ParseException e) {
             //do nothing
         }
-        alarmOn = (res.getString(res.getColumnIndex("isAlarmOn"))) == "true" ? true : false;
+        alarmOn = (res.getString(res.getColumnIndex("isAlarmOn"))).equals("true") ? true : false;
         reccurenceType = res.getString(res.getColumnIndex("reccurenceType"));
         notificationType = res.getString(res.getColumnIndex("notificationType"));
         alarmTone = "";

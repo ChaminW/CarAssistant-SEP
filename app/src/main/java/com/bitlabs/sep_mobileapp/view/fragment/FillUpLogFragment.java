@@ -1,13 +1,23 @@
-package com.bitlabs.sep_mobileapp.view;
+package com.bitlabs.sep_mobileapp.view.fragment;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.bitlabs.sep_mobileapp.R;
+import com.bitlabs.sep_mobileapp.controller.FuelFillUpDAO;
+import com.bitlabs.sep_mobileapp.data.FuelFillUp;
+import com.bitlabs.sep_mobileapp.view.activity.AddFillUp;
+import com.bitlabs.sep_mobileapp.view.viewModel.fillUpBaseAdapter;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +28,18 @@ import com.bitlabs.sep_mobileapp.R;
  * create an instance of this fragment.
  */
 public class FillUpLogFragment extends Fragment {
+    public static final String PREFS_NAME = "MyPrefsFile";
+
+
+    private View view;
+    private ListView listview;
+
+    private ArrayList<FuelFillUp> fillUpList;
+    private fillUpBaseAdapter baseAdapter;
+    private FuelFillUp fuelFillUp;
+
+    private String relevantRegNo;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -63,8 +85,46 @@ public class FillUpLogFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        restorePreferences();
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fill_up_log, container, false);
+        view = inflater.inflate(R.layout.fragment_fill_up_log, container, false);
+
+        FuelFillUpDAO fuelFillUpDAO = new FuelFillUpDAO(getActivity());
+        fillUpList = fuelFillUpDAO.getFillUpAsRegNo(relevantRegNo);
+
+        listview = (ListView) view.findViewById(R.id.fillUp_listView);
+
+
+        baseAdapter = new fillUpBaseAdapter(getActivity(), fillUpList) {
+        };
+        listview.setAdapter(baseAdapter);
+
+        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                FuelFillUp entry= (FuelFillUp) parent.getAdapter().getItem(position);
+                Intent intent = new Intent(getActivity(), AddFillUp.class);
+                int fillUpId =entry.getId();
+
+                System.out.println(fillUpId+"   selected fill up id");
+                intent.putExtra("type", "edit");
+                intent.putExtra("Id", fillUpId);
+                startActivity(intent);
+                return true;
+            }
+
+
+        });
+
+
+        return view;
+    }
+    private void restorePreferences() {
+        // Restore preferences
+
+        SharedPreferences settings = this.getActivity().getSharedPreferences(PREFS_NAME, 0);
+        relevantRegNo = settings.getString("relevantRegNo", "XX-XXXX");
+        System.out.println("pre restored-"+relevantRegNo);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -80,6 +140,15 @@ public class FillUpLogFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+
+        System.out.println("onDetach() called");
+//        // We need an Editor object to make preference changes.
+//        // All objects are from android.context.Context
+//        SharedPreferences settings = this.getActivity().getSharedPreferences(PREFS_NAME, 0);
+//        SharedPreferences.Editor editor = settings.edit();
+//        editor.putString("relevantRegNo", relevantRegNo);
+//        // Commit the edits!
+//        editor.commit();
     }
 
     /**
@@ -96,4 +165,6 @@ public class FillUpLogFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }

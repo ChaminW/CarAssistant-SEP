@@ -11,14 +11,24 @@ public class Vehicle {
     private String fuelType;
     private String regNo;
     private String year;
+    private String image;
 
-    public Vehicle(String model, String distanceUnit, String fuelUnit, String fuelType, String regNo, String year) {
+    public Vehicle(String model, String distanceUnit, String fuelUnit, String fuelType, String regNo, String year, String image) {
         this.model = model;
         this.distanceUnit = distanceUnit;
         this.fuelUnit = fuelUnit;
         this.fuelType = fuelType;
         this.regNo = regNo;
         this.year = year;
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getFuelType() {

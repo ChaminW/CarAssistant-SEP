@@ -1,54 +1,28 @@
-package com.bitlabs.sep_mobileapp.view;
+package com.bitlabs.sep_mobileapp.view.fragment;
 
-import android.graphics.Typeface;
+
 import android.net.Uri;
 import android.os.Bundle;
+
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTabHost;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.bitlabs.sep_mobileapp.R;
-import com.bitlabs.sep_mobileapp.view.viewModel.Bean;
-import com.bitlabs.sep_mobileapp.view.viewModel.JayBaseAdapter;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link VehicleFragment.OnFragmentInteractionListener} interface
+ * {@link Home.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link VehicleFragment#newInstance} factory method to
+ * Use the {@link Home#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class VehicleFragment extends Fragment {
-
-    private  View view;
-
-    private ListView listview;
-
-    Typeface fonts1,fonts2;
-
-    private int[] IMAGE = {R.drawable.car_image1, R.drawable.car_image2, R.drawable.car_image3,
-            R.drawable.car_image1, R.drawable.car_image2};
-
-    private String[] TITLE = {"Honda Civiv", "Toyota Allion", "Nissan Blue Bird", "Woks Wagon", "Bumble Bee"};
-
-    private String[] DESCRIPTION = {"One Size", "One Size", "Size L", "One Size", "One Size"};
-
-    private String[] DATE = {"$ 220.00","$ 49.00","$ 320.00","$ 220.00","$ 49.00"};
-
-    private ArrayList<com.bitlabs.sep_mobileapp.view.viewModel.Bean>Bean;
-    private JayBaseAdapter baseAdapter;
-
-
-
-
-
-
-
+public class Home extends Fragment implements ActionBar.TabListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -60,7 +34,7 @@ public class VehicleFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public VehicleFragment() {
+    public Home() {
         // Required empty public constructor
     }
 
@@ -70,11 +44,11 @@ public class VehicleFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment VehicleFragment.
+     * @return A new instance of fragment Home.
      */
     // TODO: Rename and change types and number of parameters
-    public static VehicleFragment newInstance(String param1, String param2) {
-        VehicleFragment fragment = new VehicleFragment();
+    public static Home newInstance(String param1, String param2) {
+        Home fragment = new Home();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -89,39 +63,53 @@ public class VehicleFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        ((Navigation) getActivity()).getSupportActionBar().setTitle(
-                "Vehicles");
-    }
 
+
+
+    }
+    public FragmentTabHost mTabHost;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_vehicle, container, false);
+        mTabHost = new FragmentTabHost(getActivity());
+        mTabHost.setup(getActivity(), getChildFragmentManager(), R.layout.fragment_home);
+
+        Bundle arg1 = new Bundle();
+        arg1.putInt("Arg for Frag1", 1);
+        mTabHost.addTab(mTabHost.newTabSpec("Fuel_Log").setIndicator("Fuel Log"),
+                FillUpLogFragment.class, arg1);
+
+        Bundle arg2 = new Bundle();
+        arg2.putInt("Arg for Frag2", 2);
+        mTabHost.addTab(mTabHost.newTabSpec("Expense_Log").setIndicator("Expense Log"),
+                ExpenseLogFragment.class, arg2);
+        Bundle arg3 = new Bundle();
+        arg2.putInt("Arg for Frag3", 3);
+        mTabHost.addTab(mTabHost.newTabSpec("Calculator").setIndicator("Calculator"),
+                CalculatorFragment.class, arg3);
 
 
-        listview = (ListView)view.findViewById(R.id.vehicle_list_view);
+        mTabHost.setBackgroundColor(0xD2212121);
+        return mTabHost;
 
 
-        Bean = new ArrayList<Bean>();
-
-        for (int i= 0; i< TITLE.length; i++){
-
-            Bean bean = new Bean(IMAGE[i], TITLE[i], DESCRIPTION[i], DATE[i]);
-            Bean.add(bean);
-
-        }
 
 
-        baseAdapter = new JayBaseAdapter(getActivity(), Bean) {
-        };
-
-        listview.setAdapter(baseAdapter);
 
 
-        return view;
+
+
+
+
     }
 
+    // TODO: Rename method, update argument and hook method into UI event
+    public void onButtonPressed(Uri uri) {
+        if (mListener != null) {
+            mListener.onFragmentInteraction(uri);
+        }
+    }
 
 
 
@@ -129,9 +117,20 @@ public class VehicleFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-        ((Navigation) getActivity()).getSupportActionBar().setTitle(
-                "Car Assistant");
+    }
 
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
 
     }
 
@@ -140,7 +139,7 @@ public class VehicleFragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p>
+     * <p/>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
@@ -149,6 +148,4 @@ public class VehicleFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
-
 }
