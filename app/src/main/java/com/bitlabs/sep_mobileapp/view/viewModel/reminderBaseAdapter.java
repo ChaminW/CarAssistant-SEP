@@ -81,6 +81,11 @@ public class reminderBaseAdapter extends BaseAdapter {
         return convertView;
     }
 
+    public void setList(ArrayList<Reminder> reminderList) {
+        this.reminderList=reminderList;
+
+    }
+
 
     private class ViewHolder {
 

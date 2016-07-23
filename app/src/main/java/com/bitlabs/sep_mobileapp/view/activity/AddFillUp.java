@@ -28,10 +28,10 @@ import com.bitlabs.sep_mobileapp.R;
 import com.bitlabs.sep_mobileapp.controller.FuelFillUpDAO;
 import com.bitlabs.sep_mobileapp.controller.VehicleDAO;
 import com.bitlabs.sep_mobileapp.data.FuelFillUp;
-import com.bitlabs.sep_mobileapp.data.OtherExpense;
-import com.bitlabs.sep_mobileapp.view.viewController.dateFromPicker;
+import com.bitlabs.sep_mobileapp.view.viewController.Utils;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -155,7 +155,12 @@ public class AddFillUp extends AppCompatActivity {
 //// Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        getMenuInflater().inflate(R.menu.menu_add_fill_up, menu);
+        if (editType.equals("edit")) {
+
+            getMenuInflater().inflate(R.menu.menu_edit_fill_up, menu);
+        } else {
+            getMenuInflater().inflate(R.menu.menu_add_fill_up, menu);
+        }
         MenuItem item = menu.findItem(R.id.vehicleSelectSpinner);
         SpinVehicleSelect = (Spinner) MenuItemCompat.getActionView(item);
         SpinVehicleSelect.setAdapter(adapter); // set the adapter to provide layout of rows and content
@@ -169,7 +174,7 @@ public class AddFillUp extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 Object item = arg0.getItemAtPosition(arg2);
                 if (item != null) {
-                    Toast.makeText(AddFillUp.this, "Vehicle " + item.toString() + " selected", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(AddFillUp.this, "Vehicle " + item.toString() + " selected", Toast.LENGTH_SHORT).show();
                     relevantRegNo = item.toString();
                 }
 
@@ -200,8 +205,20 @@ public class AddFillUp extends AppCompatActivity {
 
             return true;
         }
+        else if (id == R.id.addFillUp_delete) {
+            fillUpDelete();
+
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void fillUpDelete() {
+        fuelFillUpDAO.deleteFuelFillUp(relavantId);
+        Toast.makeText(AddFillUp.this, "Fill up details successfully added!", Toast.LENGTH_SHORT).show();
+        endActivity();
+
     }
 
     @Override
@@ -222,13 +239,34 @@ public class AddFillUp extends AppCompatActivity {
         boolean isFullTank;
 
         if (isFillUpValid()) {
-            id = 1;
-            date = dateFromPicker.getDate(DPdate);
+            id = relavantId;
+            date = Utils.getDateFromPicker(DPdate);
             odoMeter = Integer.parseInt(TVodoCount.getText().toString());
-            cost = Double.parseDouble(TVcost.getText().toString());
-            amount = Double.parseDouble(TVamount.getText().toString());
-            costPerLiter = Double.parseDouble(TVcostPerLiter.getText().toString());
-            regNo = relevantRegNo;                                                       //temporary
+            try {
+                cost = Double.parseDouble(TVcost.getText().toString());
+            }
+            catch (NumberFormatException e){
+                cost=Double.parseDouble(TVamount.getText().toString())*Double.parseDouble(TVcostPerLiter.getText().toString());
+                DecimalFormat df = new DecimalFormat("#.##");
+                cost = Double.valueOf(df.format(cost));
+            }
+            try {
+                amount = Double.parseDouble(TVamount.getText().toString());
+            }
+            catch (NumberFormatException e){
+                amount =Double.parseDouble(TVcost.getText().toString())/Double.parseDouble(TVcostPerLiter.getText().toString());
+                DecimalFormat df = new DecimalFormat("#.##");
+                amount = Double.valueOf(df.format(amount));
+            }
+            try {
+                costPerLiter = Double.parseDouble(TVcostPerLiter.getText().toString());
+            }catch (NumberFormatException e){
+                costPerLiter =  Double.parseDouble(TVcost.getText().toString())/Double.parseDouble(TVamount.getText().toString());
+                DecimalFormat df = new DecimalFormat("#.##");
+                costPerLiter = Double.valueOf(df.format(costPerLiter));
+
+            }
+            regNo = relevantRegNo;
             note = TVnote.getText().toString();
             isFullTank = CboxIsFullTank.isChecked();
             FuelFillUp fuelFillUp = new FuelFillUp(id, date, odoMeter, cost, amount, costPerLiter, regNo, isFullTank, Double.NaN, Double.NaN, note);
@@ -245,7 +283,7 @@ public class AddFillUp extends AppCompatActivity {
             }
             else {
                 fuelFillUpDAO.setFillUp(fuelFillUp);
-                Toast.makeText(AddFillUp.this, "Fill up details successfully added!", Toast.LENGTH_LONG).show();
+                Toast.makeText(AddFillUp.this, "Fill up details successfully added!", Toast.LENGTH_SHORT).show();
             }
             endActivity();
         }
@@ -257,7 +295,7 @@ public class AddFillUp extends AppCompatActivity {
         Boolean valid = true;
         String errorMsg = "";
 
-        Date date = dateFromPicker.getDate(DPdate);
+        Date date = Utils.getDateFromPicker(DPdate);
         Date CurrentDate = new Date();
 
         int factor = 0;
@@ -288,7 +326,7 @@ public class AddFillUp extends AppCompatActivity {
         }
 
         if (!valid) {
-            Toast.makeText(this, errorMsg, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, errorMsg, Toast.LENGTH_SHORT).show();
         }
         return valid;
     }

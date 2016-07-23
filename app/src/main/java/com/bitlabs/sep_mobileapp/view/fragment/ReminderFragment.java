@@ -116,12 +116,15 @@ public class ReminderFragment extends Fragment {
                 //Creating the instance of PopupMenu
                 PopupMenu popup = new PopupMenu(getActivity(), view);
                 //Inflating the Popup using xml file
-                popup.getMenuInflater().inflate(R.menu.vehiclelitem_popup, popup.getMenu());
+                popup.getMenuInflater().inflate(R.menu.reminder_item_popup, popup.getMenu());
 
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getTitle().toString()) {
+                            case "Deactivate":
+                                reminderDeactivate(entry);
+                                break;
                             case "Activate":
                                 reminderActivate(entry);
                                 break;
@@ -148,6 +151,7 @@ public class ReminderFragment extends Fragment {
                 //reload content
                 reminderList.clear();
                 reminderList = reminderDAO.getAllReminder();
+                baseAdapter.setList(reminderList);
                 baseAdapter.notifyDataSetChanged();
                 listview.invalidateViews();
                 listview.refreshDrawableState();
@@ -156,6 +160,15 @@ public class ReminderFragment extends Fragment {
 
 
         return view;
+    }
+
+    private void reminderDeactivate(Reminder entry) {
+
+        Reminder reminder = entry;
+        reminder.setAlarmOn(false);
+        reminderDAO.updateRemider(reminder);
+        getActivity().runOnUiThread(run);
+
     }
 
     private void reminderDelete(final Reminder entry) {

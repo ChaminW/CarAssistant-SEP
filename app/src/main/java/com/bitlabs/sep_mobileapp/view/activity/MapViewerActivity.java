@@ -130,7 +130,7 @@ public class MapViewerActivity extends FragmentActivity implements OnMapReadyCal
 
     private void addExpenseMarker(OtherExpense expense) {
         MarkerOptions markerOptions=new MarkerOptions().position(new LatLng(expense.getLatitude(),expense.getLongitude())).title("Expense place:"+expense.getCategory());
-        markerOptions.icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("fuel_marker",100,100))).snippet("This is a expense due place.");
+        markerOptions.icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("expense_marker",100,100))).snippet("This is a expense due place.");
         mMap.addMarker(markerOptions);
     }
 

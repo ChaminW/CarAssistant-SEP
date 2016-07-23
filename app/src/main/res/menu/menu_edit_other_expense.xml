@@ -9,12 +9,11 @@
         app:actionViewClass="android.widget.Spinner"
         app:showAsAction="always"
         />
-    <!--<item-->
-    <!--android:id="@+id/btnDelete"-->
-    <!--android:icon="@android:drawable/ic_menu_delete"-->
-    <!--android:title="Delete"-->
-    <!--app:showAsAction="always"-->
-    <!--/>-->
+    <item
+        android:id="@+id/expense_delete"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="Delete"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/expense_save"
         android:icon="@android:drawable/ic_menu_save"

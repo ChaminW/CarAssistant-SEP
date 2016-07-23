@@ -11,11 +11,24 @@
             android:id="@+id/nav_Vehicles"
             android:icon="@drawable/ic_directions_car_black_24dp"
             android:title="Vehicles" />
+        <item
+            android:id="@+id/nav_stat"
+            android:icon="@drawable/ic_show_chart_black_24dp"
+            android:title="Statistics" />
 
         <item
             android:id="@+id/nav_reminder"
-            android:icon="@android:drawable/ic_popup_reminder"
+            android:icon="@android:drawable/ic_menu_my_calendar"
             android:title="Reminder" />
+
+        <item
+            android:id="@+id/nav_Map"
+            android:icon="@android:drawable/ic_dialog_map"
+            android:title="Map" />
+        <item
+            android:id="@+id/nav_Charts"
+            android:icon="@drawable/ic_show_chart_black_24dp"
+            android:title="Charts" />
 
     </group>
 
@@ -34,14 +47,8 @@
                     android:id="@+id/nav_FuelLog"
                     android:icon="@android:drawable/ic_menu_sort_by_size"
                     android:title="Fuel Log" />
-                <item
-                    android:id="@+id/nav_FuelCharts"
-                    android:icon="@drawable/ic_show_chart_black_24dp"
-                    android:title="Charts" />
-                <item
-                    android:id="@+id/nav_FuelMap"
-                    android:icon="@android:drawable/ic_dialog_map"
-                    android:title="Map" />
+
+
             </group>
         </menu>
     </item>
@@ -59,14 +66,8 @@
                     android:id="@+id/nav_ExpenseLog"
                     android:icon="@android:drawable/ic_menu_sort_by_size"
                     android:title="Expense Log" />
-                <item
-                    android:id="@+id/nav_ExpenseCharts"
-                    android:icon="@drawable/ic_show_chart_black_24dp"
-                    android:title="Charts" />
-                <item
-                    android:id="@+id/nav_ExpenseMap"
-                    android:icon="@android:drawable/ic_dialog_map"
-                    android:title="Map" />
+
+
             </group>
         </menu>
     </item>
@@ -79,14 +80,14 @@
                     android:icon="@android:drawable/ic_menu_save"
                     android:title="Google Backup" />
 
-                <item
-                    android:id="@+id/nav_Instruction"
-                    android:icon="@android:drawable/ic_menu_manage"
-                    android:title="Instruction" />
-                <item
-                    android:id="@+id/nav_Settings"
-                    android:icon="@android:drawable/ic_menu_manage"
-                    android:title="Settings" />
+                <!--<item-->
+                    <!--android:id="@+id/nav_Instruction"-->
+                    <!--android:icon="@android:drawable/ic_menu_help"-->
+                    <!--android:title="Instruction" />-->
+                <!--<item-->
+                    <!--android:id="@+id/nav_Settings"-->
+                    <!--android:icon="@android:drawable/ic_menu_manage"-->
+                    <!--android:title="Settings" />-->
 
             </group>
         </menu>

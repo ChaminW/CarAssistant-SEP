@@ -107,7 +107,7 @@ public class VehicleFragment extends Fragment {
 
         listview = (ListView) view.findViewById(R.id.vehicle_list_view);
 
-        baseAdapter = new vehicleBaseAdapter(getActivity(), vehicleList);
+        baseAdapter = new vehicleBaseAdapter(getActivity(), vehicleList,relevantRegNo);
 
         listview.setAdapter(baseAdapter);
 
@@ -116,11 +116,7 @@ public class VehicleFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 final Vehicle entry = (Vehicle) parent.getAdapter().getItem(position);
-//                Intent intent = new Intent(getActivity(), AddVehicle.class);
-//                String regNo = entry.getRegNo();
-//                intent.putExtra("type","edit");
-//                intent.putExtra("regNo", regNo);
-//                startActivity(intent);
+
 
                 //Creating the instance of PopupMenu
                 PopupMenu popup = new PopupMenu(getActivity(), view);
@@ -155,13 +151,13 @@ public class VehicleFragment extends Fragment {
         run = new Runnable() {
             public void run() {
                 //reload content
-//                vehicleList.clear();
-//                vehicleList = vehicleDAO.getAllVehicle();
-//                baseAdapter.setList(vehicleList);
-//                baseAdapter.setActiveRegNo(relevantRegNo);
-//                baseAdapter.notifyDataSetChanged();
-//                listview.invalidateViews();
-//                listview.refreshDrawableState();
+                vehicleList.clear();
+                vehicleList = vehicleDAO.getAllVehicle();
+                baseAdapter.setList(vehicleList);
+                baseAdapter.setActiveRegNo(relevantRegNo);
+                baseAdapter.notifyDataSetChanged();
+                listview.invalidateViews();
+                listview.refreshDrawableState();
             }
         };
 

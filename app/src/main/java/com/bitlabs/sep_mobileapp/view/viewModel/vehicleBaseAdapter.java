@@ -4,13 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.bitlabs.sep_mobileapp.R;
@@ -29,17 +30,17 @@ public class vehicleBaseAdapter extends BaseAdapter {
     Typeface fonts1, fonts2;
     String activeRegNo;
 
-    public vehicleBaseAdapter(Context context, ArrayList<Vehicle> vehicleList) {
+    public vehicleBaseAdapter(Context context, ArrayList<Vehicle> vehicleList,String activeRegNo) {
         this.context = context;
         this.vehicleList = vehicleList;
-        //this.activeRegNo=relevantRegNo;
+        this.activeRegNo=activeRegNo;
     }
 
     public void setList(ArrayList<Vehicle> vehicleList) {
         this.vehicleList = vehicleList;
     }
 
-    public void setActiveRegNo(String ctiveRegNo) {
+    public void setActiveRegNo(String activeRegNo) {
         this.activeRegNo = activeRegNo;
 
     }
@@ -75,7 +76,8 @@ public class vehicleBaseAdapter extends BaseAdapter {
             viewHolder.fuelType = (TextView) convertView.findViewById(R.id.fuelType);
             viewHolder.fuelUnit = (TextView) convertView.findViewById(R.id.fuelUnit);
             viewHolder.model = (TextView) convertView.findViewById(R.id.model);
-            viewHolder.rBtn = (RadioButton) convertView.findViewById(R.id.vehicle_list_radioBtn);
+            viewHolder.activeSwitch= (Switch) convertView.findViewById(R.id.vehicle_list_switch);
+
 
             convertView.setTag(viewHolder);
         } else {
@@ -85,14 +87,24 @@ public class vehicleBaseAdapter extends BaseAdapter {
 
         Vehicle vehicle = (Vehicle) getItem(position);
 
-        viewHolder.image.setImageResource(R.drawable.car_image1);
+        try {
+            viewHolder.image.setImageURI(Uri.parse(vehicle.getImage()));
+        }
+        catch (Exception e) {
+            viewHolder.image.setImageResource(R.drawable.car_image2);
+        }
         viewHolder.model.setText("Model: " + vehicle.getModel());
         viewHolder.regNo.setText(vehicle.getRegNo());
         //viewHolder.year.setText(bean.getYear());
         viewHolder.fuelType.setText(vehicle.getFuelType());
         viewHolder.fuelUnit.setText(vehicle.getFuelUnit());
+        viewHolder.activeSwitch.setClickable(false);
+
         if (vehicle.getRegNo().equals(activeRegNo)) {
-            viewHolder.rBtn.setChecked(true);
+            viewHolder.activeSwitch.setChecked(true);
+        }
+        else {
+            viewHolder.activeSwitch.setChecked(false);
         }
         return convertView;
     }
@@ -105,7 +117,8 @@ public class vehicleBaseAdapter extends BaseAdapter {
         //TextView year;
         TextView fuelType;
         TextView fuelUnit;
-        RadioButton rBtn;
+        Switch activeSwitch;
+
     }
 }
 

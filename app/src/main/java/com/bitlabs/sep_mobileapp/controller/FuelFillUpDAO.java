@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.bitlabs.sep_mobileapp.data.FuelFillUp;
@@ -25,12 +26,13 @@ public class FuelFillUpDAO extends DBhelper {
         super(context);
     }
 
-    public void setFillUp(FuelFillUp fuelFillUp) {
+    //method for add fuel fill up data into database
+    public boolean setFillUp(FuelFillUp fuelFillUp) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        //String query = "INSERT INTO " + TABLE_FILLUP + " VALUES (?,?,?,?,?,?,?,?,?)";
+
 
         SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
         String strDate = dateFormater.format(fuelFillUp.getDate());
@@ -46,18 +48,18 @@ public class FuelFillUpDAO extends DBhelper {
         values.put("longitude ", fuelFillUp.getLongitude());
         values.put("note", fuelFillUp.getNote());
 
-        db.insert(TABLE_FILLUP, null, values);
+        db.insert(TABLE_FILLUP, null, values);                 //execute query
         System.out.println("fuelFill up added successfully");
 
         db.close();
-
+        return true;
 
     }
-
-    public void updateFillUp(FuelFillUp fuelFillUp) {
+    //method for update fuel fill up data into database
+    public boolean updateFillUp(FuelFillUp fuelFillUp) {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
+        ContentValues values = new ContentValues();                      //value container
 
         SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
         String strDate = dateFormater.format(fuelFillUp.getDate());
@@ -73,14 +75,15 @@ public class FuelFillUpDAO extends DBhelper {
         values.put("longitude ", fuelFillUp.getLongitude());
         values.put("note", fuelFillUp.getNote());
 
-        db.update(TABLE_FILLUP,values,"Id = ? ", new String[] { Integer.toString(fuelFillUp.getId()) } );
+        db.update(TABLE_FILLUP,values,"Id = ? ", new String[] { Integer.toString(fuelFillUp.getId()) } );  //execute query
         System.out.println("fuelFill up updated successfully");
 
         db.close();
+        return true;
 
 
     }
-
+    //method for get all fuel fill up data into database
     public List<FuelFillUp> getAllFillUps() {
         //give fill up details
         List<FuelFillUp> array_list = new ArrayList<>();
@@ -95,11 +98,11 @@ public class FuelFillUpDAO extends DBhelper {
 
             } while (res.moveToNext());
         }
-// return quest list
+        // return quest list
         db.close();
         return array_list;
     }
-
+    //method for delete fuel fill up data into database
     public boolean deleteFuelFillUp(int Id) {
         // remove existing details . if it is not in db give error.
         SQLiteDatabase db = this.getWritableDatabase();
@@ -108,7 +111,7 @@ public class FuelFillUpDAO extends DBhelper {
             String msg = "FuelFillUp detail was deleted";
             System.out.println(msg);
             return true;
-        } catch (SQLiteException e) {
+        } catch (SQLiteException e) {                                                 //exception handling
             String msg = "FuelFillUp detail is invalid. It can be already deleted";
             System.out.println(msg);
             return false;
@@ -117,29 +120,28 @@ public class FuelFillUpDAO extends DBhelper {
             db.close();
         }
     }
-
+    //method for get fuel fill up data as the reg no from database
     public ArrayList<FuelFillUp> getFillUpAsRegNo(String regNo) throws SQLiteException{
         SQLiteDatabase db;
         ArrayList<FuelFillUp> array_list = new ArrayList<FuelFillUp>();
-// Select All Query
+        // Select All Query
         String selectQuery = "SELECT * FROM " + TABLE_FILLUP + " WHERE regNo = '" + regNo + "' ORDER BY date DESC";
         // Log.d("query",selectQuery);///////log print
 
         db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(selectQuery, null);
-// looping through all rows and adding to list
+        // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
                 array_list.add(convertToFuelFillUp(cursor));
             } while (cursor.moveToNext());
         }
-// return quest list
-
+        // return quest list
         return array_list;
     }
 
-
+    //method for get fuel fill up data as the id from database
     public FuelFillUp getFillUpAsId(int Id) throws SQLiteException{
         SQLiteDatabase db;
         // Select All Query
@@ -158,7 +160,7 @@ public class FuelFillUpDAO extends DBhelper {
     }
 
 
-
+    //private method for convert cursor resource in to fill up object
     private FuelFillUp convertToFuelFillUp(Cursor res) {
         int id;
         Date date;
@@ -179,7 +181,7 @@ public class FuelFillUpDAO extends DBhelper {
             date = dateF.parse(res.getString(res.getColumnIndex("date")));
 
         } catch (ParseException e) {
-            //do nothing
+            Log.d("Error","date parsing error");
         }
         odoMeter = res.getInt(res.getColumnIndex("odoMeter"));
         cost = res.getDouble(res.getColumnIndex("cost"));

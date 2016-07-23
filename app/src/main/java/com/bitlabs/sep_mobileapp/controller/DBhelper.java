@@ -26,6 +26,7 @@ public abstract class DBhelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //create Fillup table
         db.execSQL("create table "
                 + TABLE_FILLUP + "(" +
                 "Id" + " integer primary key autoincrement, " +
@@ -41,7 +42,7 @@ public abstract class DBhelper extends SQLiteOpenHelper {
                 "note" + " text " +
                 ");");
 
-
+        //create expense table
         db.execSQL("create table "
                 + TABLE_OTHEREXPENSE + "(" +
                 "Id" + " integer primary key autoincrement, " +
@@ -58,7 +59,7 @@ public abstract class DBhelper extends SQLiteOpenHelper {
                 ");");
 
 
-
+        //create reminder table
         db.execSQL("create table "
                 + TABLE_REMINDER + "(" +
                 "Id" + " integer primary key autoincrement, " +
@@ -68,6 +69,8 @@ public abstract class DBhelper extends SQLiteOpenHelper {
                 "notificationType" + " text, " +
                 "reccurenceType" + " text " +
                 ");");
+
+        //create vehicle table
         db.execSQL("create table "
                 + TABLE_VEHICLE + "(" +
                 "regNo" + " text primary key , " +
@@ -80,6 +83,8 @@ public abstract class DBhelper extends SQLiteOpenHelper {
                 ");");
 
         Log.d(DBhelper.class.getName(), " data base is created");
+
+
 
     }
 
@@ -108,8 +113,6 @@ public abstract class DBhelper extends SQLiteOpenHelper {
         db.execSQL("drop TABLE IF EXISTS" + TABLE_OTHEREXPENSE);
         db.execSQL("drop TABLE IF EXISTS" + TABLE_REMINDER);
         db.execSQL("drop TABLE IF EXISTS" + TABLE_VEHICLE);
-
-
 
     }
 

@@ -3,6 +3,7 @@ package com.bitlabs.sep_mobileapp.view.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -28,11 +29,12 @@ import com.bitlabs.sep_mobileapp.view.fragment.ExpenseLogFragment;
 import com.bitlabs.sep_mobileapp.view.fragment.FillUpLogFragment;
 import com.bitlabs.sep_mobileapp.view.fragment.Home;
 import com.bitlabs.sep_mobileapp.view.fragment.ReminderFragment;
+import com.bitlabs.sep_mobileapp.view.fragment.Satatics;
 import com.bitlabs.sep_mobileapp.view.fragment.VehicleFragment;
 
 import java.util.List;
 
-public class Navigation extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Navigation extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener ,Satatics.OnFragmentInteractionListener{
     public static final String PREFS_NAME = "MyPrefsFile";
 
 
@@ -49,14 +51,13 @@ public class Navigation extends AppCompatActivity implements NavigationView.OnNa
         setContentView(R.layout.activity_navigation);
 
         /////////////////////////////////////////////////////////////////////////////////////////////
-        dbTester = new DBTester(this);
+        //dbTester = new DBTester(this);
         //dbTester.clearAll();
 
 
 
         /////////////////////////////////////////////////////////////////////////////////////////////
         vehicleDAO =new VehicleDAO(this);
-
         restorePreferences();
 
 
@@ -221,34 +222,32 @@ public class Navigation extends AppCompatActivity implements NavigationView.OnNa
             fragment = new ExpenseLogFragment();
             selectedFrag="E";
 
-        }else if (id == R.id.nav_FuelCharts) {
+        }else if (id == R.id.nav_Charts) {
 
             Intent getAddExpenseIntent = new Intent(this, ChartView.class);
             startActivity(getAddExpenseIntent);
 
 
-        } else if (id == R.id.nav_FuelMap) {
+        } else if (id == R.id.nav_Map) {
 
             Intent getAddExpenseIntent = new Intent(this, MapViewerActivity.class);
             startActivity(getAddExpenseIntent);
 
-        } else if (id == R.id.nav_ExpenseCharts) {
-
-            Intent getAddExpenseIntent = new Intent(this, ChartView.class);
-            startActivity(getAddExpenseIntent);
-
-        } else if (id == R.id.nav_ExpenseMap) {
-            Intent getAddExpenseIntent = new Intent(this, MapViewerActivity.class);
-            startActivity(getAddExpenseIntent);
+//        } else if (id == R.id.nav_Instruction) {
+//
+//
+//
+        } else if (id == R.id.nav_stat) {
+            fragment = new Satatics();
+            selectedFrag="S";
 
         } else if (id == R.id.nav_reminder) {
             fragment = new ReminderFragment();
             selectedFrag="R";
 
-        } else if (id == R.id.nav_Settings) {
-
-        }
-        else if (id == R.id.nav_GoogleDriveBackUp) {
+//        } else if (id == R.id.nav_Settings) {
+//
+        } else if (id == R.id.nav_GoogleDriveBackUp) {
             Intent getBackupIntent = new Intent(this, GoogleBackup.class);
             startActivity(getBackupIntent);
         }
@@ -292,10 +291,8 @@ public class Navigation extends AppCompatActivity implements NavigationView.OnNa
         startActivity(getAddReminderIntent);
     }
 
-    public void onCalcClick(View view){
-
-
-
+    public void onFragmentInteraction(Uri uri){
+        //you can leave it empty
     }
 
 }

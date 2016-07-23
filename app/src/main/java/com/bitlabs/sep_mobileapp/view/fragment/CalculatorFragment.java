@@ -3,6 +3,7 @@ package com.bitlabs.sep_mobileapp.view.fragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.bitlabs.sep_mobileapp.R;
+
+import java.text.DecimalFormat;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +29,10 @@ public class CalculatorFragment extends Fragment {
     EditText ETperCost;
     EditText ETcost;
     Button BtnCalc;
+
+    Double amount;
+    Double perCost;
+    Double cost;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,17 +77,35 @@ public class CalculatorFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
 
-        view = inflater.inflate(R.layout.fragment_expense_log, container, false);
+        view = inflater.inflate(R.layout.fragment_calculator, container, false);
 
         ETamount= (EditText) view.findViewById(R.id.calculator_amount);
         ETperCost= (EditText) view.findViewById(R.id.calculator_cost_per);
         ETcost=(EditText) view.findViewById(R.id.calculator_cost);
         BtnCalc= (Button) view.findViewById(R.id.calculator_cal_btn);
+
+
+        BtnCalc.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                perCost=Double.parseDouble(ETperCost.getText().toString());
+                amount=Double.parseDouble(ETamount.getText().toString());
+
+                DecimalFormat df = new DecimalFormat("#.##");
+                amount = Double.valueOf(df.format(amount));
+                perCost = Double.valueOf(df.format(perCost));
+
+                cost=perCost*amount;
+                cost = Double.valueOf(df.format(cost));
+                ETcost.setText(cost.toString());
+
+
+            }
+        });
 
 
 

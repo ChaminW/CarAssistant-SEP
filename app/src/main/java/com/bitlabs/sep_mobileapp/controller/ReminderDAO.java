@@ -6,16 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
-import com.bitlabs.sep_mobileapp.R;
-import com.bitlabs.sep_mobileapp.data.FuelFillUp;
-import com.bitlabs.sep_mobileapp.data.OtherExpense;
 import com.bitlabs.sep_mobileapp.data.Reminder;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Chamin on 5/3/2016.
@@ -27,7 +23,7 @@ public class ReminderDAO extends DBhelper {
         super(context);
     }
 
-    public void setReminder(Reminder reminder) {
+    public boolean setReminder(Reminder reminder) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         //String query = "INSERT INTO " + TABLE_REMINDER + " VALUES (?,?,?,?,?,?)";
@@ -47,9 +43,10 @@ public class ReminderDAO extends DBhelper {
         db.close();
         System.out.println("reminder added");
 
-
+        return true;
     }
-    public void updateRemider(Reminder reminder) {
+
+    public boolean updateRemider(Reminder reminder) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -63,14 +60,13 @@ public class ReminderDAO extends DBhelper {
         values.put("notificationType", reminder.getNotificationType());
         values.put("reccurenceType", reminder.getReccurenceType());
 
-        db.update(TABLE_REMINDER,values,"Id = ? ", new String[] { Integer.toString(reminder.getId()) } );
+        db.update(TABLE_REMINDER, values, "Id = ? ", new String[]{Integer.toString(reminder.getId())});
         System.out.println("reminder updated successfully");
 
         db.close();
 
-
+        return true;
     }
-
 
 
     public ArrayList<Reminder> getAllReminder() {
@@ -78,7 +74,7 @@ public class ReminderDAO extends DBhelper {
         ArrayList<Reminder> array_list = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String query = "SELECT * FROM " + TABLE_REMINDER;
+        String query = "SELECT * FROM " + TABLE_REMINDER+" ORDER BY time DESC";
         Cursor res = db.rawQuery(query, null);
         res.moveToFirst();
 
@@ -105,8 +101,6 @@ public class ReminderDAO extends DBhelper {
             db.close();
         }
     }
-
-
 
 
     public Reminder getReminderAsId(int Id) {

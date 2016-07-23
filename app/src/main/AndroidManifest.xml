@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+
     <application
         android:name="android.support.multidex.MultiDexApplication"
         android:allowBackup="true"
@@ -96,5 +97,6 @@
         <activity android:name=".view.activity.AddReminder" />
         <activity android:name=".view.activity.GoogleBackup"></activity>
     </application>
+
 
 </manifest>

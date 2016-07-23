@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.bitlabs.sep_mobileapp.R;
 import com.bitlabs.sep_mobileapp.controller.VehicleDAO;
+import com.bitlabs.sep_mobileapp.data.Expense;
 import com.bitlabs.sep_mobileapp.data.Vehicle;
 
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class AddVehicle extends AppCompatActivity {
 
     private CoordinatorLayout coordinatorLayout;
 
+    private String uriStr;
 
     ImageView imgView;
     TextView TVregNo;
@@ -90,6 +92,16 @@ public class AddVehicle extends AppCompatActivity {
 
     private void setVehicleView() {
         relavantVehicle=vehicleDAO.getVehicleAsRegNo(relavantRegNo);
+
+        try {
+
+            imgView.setImageURI(Uri.parse(relavantVehicle.getImage()));
+            uriStr=relavantVehicle.getImage();
+            imgView.setBackground(null);
+        }catch (Exception e){
+            imgView.setImageResource(R.drawable.car_image2);
+        }
+
 
         TVregNo.setText(relavantVehicle.getRegNo()+"");
         TVmodel.setText(relavantVehicle.getModel()+"");
@@ -179,7 +191,7 @@ public class AddVehicle extends AppCompatActivity {
             fuelType = SpinfuelType.getSelectedItem().toString();
             fuelUnit = SpinfuelUnit.getSelectedItem().toString();
             distanceUnit = SpinDistanceUnit.getSelectedItem().toString();
-            image = "";    //temporary
+            image = uriStr;    //temporary
 
             Vehicle tempVehicle = new Vehicle(model, distanceUnit, fuelUnit, fuelType, regNo, year, image);
             if(editType=="edit"){
@@ -236,7 +248,9 @@ public class AddVehicle extends AppCompatActivity {
                     String path = getPathFromURI(selectedImageUri);
                     Log.i(TAG, "Image Path : " + path);
                     // Set the image in ImageView
+                    imgView.setBackground(null);
                     imgView.setImageURI(selectedImageUri);
+                    uriStr=selectedImageUri.toString();
                 }
             }
         }

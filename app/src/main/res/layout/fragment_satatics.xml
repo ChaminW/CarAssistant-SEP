@@ -1,0 +1,493 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#b5acabab"
+    tools:context="com.bitlabs.sep_mobileapp.view.fragment.Satatics">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:capitalize="characters"
+                    android:clickable="true"
+                    android:padding="10dp"
+                    android:text="TOTAL STATISTICS"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+
+                    android:id="@+id/stat_tv_vehicle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vehicle : XX-XXXX"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+
+                    android:layout_gravity="right|top"/>
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#ffff"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="5dp">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Last odo counter value"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total distance"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total fuel"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total cost"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total fill-ups"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/stat_tv_1_1"
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        android:id="@+id/stat_tv_1_2"
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        android:id="@+id/stat_tv_1_3"
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        android:id="@+id/stat_tv_1_4"
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        android:id="@+id/stat_tv_1_5"
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:capitalize="characters"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="OTHER EXPENSE"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#ffff"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="5dp">
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Service total cost"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Maitenance total cost"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/textView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Registration total cost"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Parking total cost"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Wash total cost"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/textView26"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fine total cost"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/textView27"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tuning total cost"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/textView28"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Insurance total cost"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical"
+                    android:paddingRight="10dp" >
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/stat_tv_2_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/stat_tv_2_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/stat_tv_2_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/stat_tv_2_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/stat_tv_2_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/stat_tv_2_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/stat_tv_2_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/stat_tv_2_8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="AVERAGE STATISTICS"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#ffff"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="5dp">
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Average fill-up per month"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Average fill-up bill"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Average expense per month"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/textView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Average expese per year"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Average mileage per month"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Average mileage per year"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/textView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Average fuel consumption"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical"
+
+                    android:paddingRight="10dp" >
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/stat_tv_3_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/stat_tv_3_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/stat_tv_3_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/stat_tv_3_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/stat_tv_3_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/stat_tv_3_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:id="@+id/stat_tv_3_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Text"
+                        android:maxLength="11"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

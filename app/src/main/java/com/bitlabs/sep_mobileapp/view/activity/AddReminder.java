@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.bitlabs.sep_mobileapp.R;
 import com.bitlabs.sep_mobileapp.controller.ReminderDAO;
 import com.bitlabs.sep_mobileapp.data.Reminder;
-import com.bitlabs.sep_mobileapp.view.viewController.dateFromPicker;
+import com.bitlabs.sep_mobileapp.view.viewController.Utils;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -168,7 +168,7 @@ public class AddReminder extends AppCompatActivity {
         if (isOtherExpenseValid()) {
             id = 1;
 
-            srtTime = dateFromPicker.getDate(DPdate);
+            srtTime = Utils.getDateFromPicker(DPdate);
             title = TVtitle.getText().toString();
             notificationType = SpiNotificationType.getSelectedItem().toString();
             reccurenceType = SpinReccurenceType.getSelectedItem().toString();

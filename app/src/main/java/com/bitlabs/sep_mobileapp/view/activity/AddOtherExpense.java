@@ -29,7 +29,7 @@ import com.bitlabs.sep_mobileapp.controller.ReminderDAO;
 import com.bitlabs.sep_mobileapp.controller.VehicleDAO;
 import com.bitlabs.sep_mobileapp.data.OtherExpense;
 import com.bitlabs.sep_mobileapp.data.Reminder;
-import com.bitlabs.sep_mobileapp.view.viewController.dateFromPicker;
+import com.bitlabs.sep_mobileapp.view.viewController.Utils;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -161,8 +161,12 @@ public class AddOtherExpense extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, lables);
 //// Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        if (editType.equals("edit")) {
 
-        getMenuInflater().inflate(R.menu.menu_add_other_expense, menu);
+            getMenuInflater().inflate(R.menu.menu_edit_other_expense, menu);
+        } else {
+            getMenuInflater().inflate(R.menu.menu_add_other_expense, menu);
+        }
         MenuItem item = menu.findItem(R.id.vehicleSelectSpinner);
         SpinVehicleSelect = (Spinner) MenuItemCompat.getActionView(item);
         SpinVehicleSelect.setAdapter(adapter); // set the adapter to provide layout of rows and content
@@ -176,7 +180,7 @@ public class AddOtherExpense extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 Object item = arg0.getItemAtPosition(arg2);
                 if (item != null) {
-                    Toast.makeText(AddOtherExpense.this, "Vehicle " + item.toString() + " selected", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(AddOtherExpense.this, "Vehicle " + item.toString() + " selected", Toast.LENGTH_SHORT).show();
                     relevantRegNo = item.toString();
                 }
 
@@ -202,14 +206,25 @@ public class AddOtherExpense extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.saveBtn) {
+        if (id == R.id.expense_save) {
             System.out.println("save clicked");
             otherExpenseSave();
+            return true;
+        }
+        else if (id == R.id.expense_delete) {
+
+            otherExpenseDelete();
             return true;
         }
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void otherExpenseDelete() {
+        otherExpenseDAO.deleteOtherExpense(relavantId);
+        Toast.makeText(this, "Other expense details successfully deleted!", Toast.LENGTH_LONG).show();
+        endActivity();
     }
 
     private void otherExpenseSave() {
@@ -227,8 +242,8 @@ public class AddOtherExpense extends AppCompatActivity {
         Location location;
 
         if (isOtherExpenseValid()) {
-            id = 1;
-            date = dateFromPicker.getDate(DPdate);
+            id = relavantId;
+            date = Utils.getDateFromPicker(DPdate);
             try {
                 odoMeter = Integer.parseInt(TVodoCount.getText().toString());
             } catch (NumberFormatException e) {
@@ -254,12 +269,11 @@ public class AddOtherExpense extends AppCompatActivity {
                 // save as a reminder
             }
 
-            if(editType.equals("edit")){
+            if (editType.equals("edit")) {
                 otherExpenseDAO.updateOtherExpense(otherExpense);
                 Toast.makeText(AddOtherExpense.this, "Expense details successfully updated!", Toast.LENGTH_LONG).show();
 
-            }
-            else {
+            } else {
                 otherExpenseDAO.setOtherExpense(otherExpense);
                 Toast.makeText(this, "Other expense details successfully added!", Toast.LENGTH_LONG).show();
             }
@@ -277,7 +291,7 @@ public class AddOtherExpense extends AppCompatActivity {
         boolean valid = true;
         String errorMsg = "";
 
-        Date date = dateFromPicker.getDate(DPdate);
+        Date date = Utils.getDateFromPicker(DPdate);
         Date CurrentDate = new Date();
 
         if (TextUtils.isEmpty(TVtitle.getText().toString())) {
@@ -345,7 +359,5 @@ public class AddOtherExpense extends AppCompatActivity {
 
     }
 
-    public void OnOtherExpenseSaveClick(View view) {
-        otherExpenseSave();
-    }
+
 }

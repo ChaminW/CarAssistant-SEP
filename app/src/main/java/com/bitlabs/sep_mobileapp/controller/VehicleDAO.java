@@ -30,7 +30,7 @@ public class VehicleDAO extends DBhelper{
 
 
 
-    public void setVehicle(Vehicle vehicle) {
+    public boolean setVehicle(Vehicle vehicle) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -47,10 +47,11 @@ public class VehicleDAO extends DBhelper{
         db.close();
         System.out.println("Vehicle details are added.");
 
+        return true;
     }
 
 
-    public void updateVehicle(String regNo,Vehicle vehicle) {
+    public boolean updateVehicle(String regNo,Vehicle vehicle) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -68,7 +69,7 @@ public class VehicleDAO extends DBhelper{
 
         db.close();
 
-
+        return true;
     }
 
     public ArrayList<Vehicle> getAllVehicle() {

@@ -4,7 +4,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFFFFF"
-    tools:context=".view.fragment.FillUpLogFragment">
+    tools:context=".view.fragment.FillUpLogFragment"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp">
 
     <!-- TODO: Update blank fragment layout -->
     <ListView
@@ -12,7 +14,8 @@
         android:layout_height="match_parent"
         android:id="@+id/fillUp_listView"
         android:layout_gravity="center"
-        android:background="#b6b3b3b3"/>
+        android:background="#b6b3b3b3"
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addFillUp_fab"

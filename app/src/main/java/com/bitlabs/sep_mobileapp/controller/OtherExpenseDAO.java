@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
-import com.bitlabs.sep_mobileapp.data.FuelFillUp;
 import com.bitlabs.sep_mobileapp.data.OtherExpense;
 
 import java.text.ParseException;
@@ -25,7 +24,7 @@ public class OtherExpenseDAO extends DBhelper {
         super(context);
     }
 
-    public void setOtherExpense(OtherExpense otherExpense) {
+    public boolean setOtherExpense(OtherExpense otherExpense) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -47,10 +46,10 @@ public class OtherExpenseDAO extends DBhelper {
         db.insert(TABLE_OTHEREXPENSE, null, values);
         db.close();
         System.out.println("other expense is added added.");
-
+        return true;
     }
 
-    public void updateOtherExpense(OtherExpense otherExpense) {
+    public boolean updateOtherExpense(OtherExpense otherExpense) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -74,7 +73,7 @@ public class OtherExpenseDAO extends DBhelper {
 
         db.close();
 
-
+        return true;
     }
 
     public List<OtherExpense> getAllOtherExpense() {
@@ -96,11 +95,11 @@ public class OtherExpenseDAO extends DBhelper {
         return array_list;
     }
 
-    public boolean deleteOtherExpense(OtherExpense otherExpense) {
+    public boolean deleteOtherExpense(int Id) {
         // remove existing details . if it is not in db give error.
         SQLiteDatabase db = this.getWritableDatabase();
         try {
-            db.delete(TABLE_OTHEREXPENSE, "Id" + "=?", new String[]{String.valueOf(otherExpense.getId())});
+            db.delete(TABLE_OTHEREXPENSE, "Id" + "=?", new String[]{String.valueOf(Id)});
 
             return true;
         } catch (SQLiteException e) {

@@ -3,11 +3,22 @@ package com.bitlabs.sep_mobileapp.view.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.animation.AlphaAnimation;
 
 import com.bitlabs.sep_mobileapp.R;
+import com.bitlabs.sep_mobileapp.view.fragment.CalculatorFragment;
+import com.bitlabs.sep_mobileapp.view.fragment.Chart1Fragment;
+import com.bitlabs.sep_mobileapp.view.fragment.Chart2Fragment;
+import com.bitlabs.sep_mobileapp.view.fragment.Chart3Fragment;
+import com.bitlabs.sep_mobileapp.view.fragment.Satatics;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.BarData;
@@ -20,69 +31,73 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.gms.vision.text.Line;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ChartView extends AppCompatActivity {
     public static final String PREFS_NAME = "MyPrefsFile";
 
+
+    private Toolbar toolbar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart_view);
 
+//        toolbar = (Toolbar) findViewById(R.id.toolbar1);
+//        setSupportActionBar(toolbar);
 
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        plot(this);
+        getSupportActionBar().setTitle("Charts");
 
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
 
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
-    public void plot (Context context){
-        ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(4f, 0));
-        entries.add(new BarEntry(8f, 1));
-        entries.add(new BarEntry(6f, 2));
-        entries.add(new BarEntry(12f, 3));
-        entries.add(new BarEntry(18f, 4));
-        entries.add(new BarEntry(9f, 5));
-
-        ArrayList<Entry> entries2 = new ArrayList<>();
-        entries2.add(new Entry(4f, 0));
-        entries2.add(new Entry(8f, 1));
-        entries2.add(new Entry(6f, 2));
-        entries2.add(new Entry(12f, 3));
-        entries2.add(new Entry(18f, 4));
-        entries2.add(new Entry(9f, 5));
-
-        BarDataSet dataset = new BarDataSet(entries, "# of Calls");
-        dataset.setColors(ColorTemplate.COLORFUL_COLORS);
-        LineDataSet dataSet2 =new LineDataSet(entries2,"xxxx");
-        //dataSet2.setColor(Color.RED, AlphaAnimation.ZORDER_NORMAL);
-
-        ArrayList<String> labels = new ArrayList<String>();
-        labels.add("January");
-        labels.add("February");
-        labels.add("March");
-        labels.add("April");
-        labels.add("May");
-        labels.add("June");
-
-
-//        BarChart chart = new BarChart(context);
-//        LineChart chart2 = (LineChart) findViewById(R.id.chart);
-//        //setContentView(chart2);
-//
-//        //BarData data = new BarData(labels, dataset);
-//        LineData data2 =new LineData(labels, dataSet2);
-//        //chart.setData(data);
-//        chart2.setData(data2);
-//
-//        //chart.setDescription("# of times Alice called Bob");
-//        //chart.animateY(5000);
-//        chart2.animateXY(500,500);
-//        chart.invalidate();
-
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new Chart1Fragment(), "Fuel price");
+        adapter.addFragment(new Chart2Fragment(), "Fill-up cost");
+        adapter.addFragment(new Chart3Fragment(), "Expense cost variation");
+        viewPager.setAdapter(adapter);
     }
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+    }
+
+
 
     private void endActivity() {
         Intent getAddFillIntent = new Intent(this, Navigation.class);

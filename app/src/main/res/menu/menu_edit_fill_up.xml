@@ -1,25 +1,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".view.activity.AddOtherExpense">
+    tools:context=".view.activity.AddFillUp"
+
+    >
+
 
     <item
         android:id="@+id/vehicleSelectSpinner"
         android:title="ActionBar Spinner"
         app:actionViewClass="android.widget.Spinner"
-        app:showAsAction="always"
-        />
-    <!--<item-->
-    <!--android:id="@+id/btnDelete"-->
-    <!--android:icon="@android:drawable/ic_menu_delete"-->
-    <!--android:title="Delete"-->
-    <!--app:showAsAction="always"-->
-    <!--/>-->
+        android:background="#ff00"
+        app:showAsAction="ifRoom"
+        android:entries="@array/fuel_type_array"/>
     <item
-        android:id="@+id/expense_save"
+        android:id="@+id/addFillUp_delete"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="Delete"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/addFillUp_save"
         android:icon="@android:drawable/ic_menu_save"
         android:title="Save"
         app:showAsAction="always"/>
+
 
 
 </menu>
